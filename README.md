@@ -14,7 +14,7 @@ ports to the Programmable Telemetry Processor (PTP) with certain ports represent
 telemetry and satellite commands will run.
 
 ## Dependencies
-BARCoMmS was developed under the Qt 4.0.3 environment. Additionaly, certain classes were abstracted used in this software were abstracted from iSat flight software, and so were redacted from this repository. While not necessarily classified, the material is sensitive and vulnerable to constant change.
+BARCoMmS was developed under the Qt 4.0.3 environment. Additionally, the software depends on the open source CFDP library, which was inlcluded in the commit.
 
 ## Contact Us
 Questions about the software can be directed to riley.s.waite@gmail.com.
