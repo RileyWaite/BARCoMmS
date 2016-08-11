@@ -1,0 +1,1 @@
+TREK_SRC=src/trek/telemetry/GNC1_Telemetry.cpp src/trek/telemetry/Event_Telemetry.cpp src/trek/telemetry/HealthStatus_Telemetry.cpp src/trek/CCSDSTelemetryHeader.cpp src/trek/command/FSW_Control_Command.cpp src/trek/command/Decom_Enable_Command.cpp src/trek/command/TelemQuery_Command.cpp src/trek/command/ChangeMode_Command.cpp src/trek/command/Decom_Commit_Command.cpp 

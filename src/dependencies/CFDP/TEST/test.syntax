@@ -1,0 +1,55 @@
+echo
+
+suspend 1_2
+resume 1_2
+cancel 1_2
+report 1_2
+suspend all
+resume all
+cancel all
+report all
+freeze
+thaw
+
+mib
+
+set_mib my_id 25
+get_mib my_id
+
+set_mib issue_eof_recv yes
+get_mib issue_eof_recv
+
+set_mib issue_eof_recv no
+get_mib issue_eof_recv
+
+set_mib issue_eof_sent no
+get_mib issue_eof_sent
+
+set_mib ack_limit 10
+get_mib ack_limit
+
+set_mib ack_limit abc
+get_mib ack_limit
+
+set_mib ack_limit .
+get_mib ack_limit
+
+set_mib ack_limit 25
+get_mib ack_limit
+
+set_mib ack_timeout 10
+get_mib ack_timeout
+
+set_mib max_file_data_length 777
+get_mib max_file_data_length
+
+set_mib inactivity_timeout 9999
+get_mib inactivity_timeout
+
+set_mib nak_limit 12
+get_mib nak_limit
+
+set_mib nak_timeout 45
+get_mib nak_timeout
+
+exit

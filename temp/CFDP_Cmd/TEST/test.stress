@@ -1,0 +1,257 @@
+! Specify which two CFDP nodes to use:
+node 23
+node 1.24
+
+send_to_a print test_stress_begin
+send_to_b print test_stress_begin
+
+! Configure CFDP to allow lots of retransmission cycles:
+mib ack_timeout 2
+mib ack_limit 10000
+mib nak_timeout 2
+mib nak_limit 10000
+mib inactivity_timeout 36000
+
+! Configure the Link Simulator to simply deliver a specified percentage
+! of traffic (that percentage will be specifed within each test; this
+! statement chooses the appropriate Link Simulator 'mode'):
+link_sim normal
+
+
+
+! 
+! 1) Lots of File-Directive PDUs dropped:
+!
+
+! We initiate 25 file transfers in each direction (ensuring that there are
+! lots of concurrent transactions in both directions simultaneously).
+! And we have the link-simulator drop approximately half of the PDUs.
+! Because the file-size is very small, most of the retransmissions are
+! of File Directives (Metadata, EOF, Finished) rather than Filedata.
+!
+send_to_a print test_stress_1
+send_to_b print test_stress_1
+link_sim success_rate=50
+source_file_size 123
+get_and_put*25
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait_for_transaction_completion
+verify_file_transfers     ! Lots of 'control' PDUs dropped
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+!
+! 2A) Lots of transactions in both directions concurrently
+!     (perfect link):
+!
+
+! This time, we also have multiple concurrent transactions in both
+! directions simultaneously.  The file-size is much bigger than in
+! the first test, so there is lots of interleaved Filedata transfer.
+!
+send_to_a print test_stress_2a
+send_to_b print test_stress_2a
+link_sim success_rate=100
+source_file_size 1000000
+get_and_put
+source_file_size 100000
+get_and_put*10
+source_file_size 123
+get_and_put*10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait_for_transaction_completion
+verify_file_transfers     ! Lots of concurrent transactions; perfect link
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+!
+! 2B) Lots of transactions in both directions concurrently
+!     (pretty good link):
+!
+
+! This test is similar to the previous one, except that we have the 
+! link-simulator drop a small percentage of the PDUs (simulating a link
+! that is pretty good, but not as good as the typical near-Earth space link).
+!
+send_to_a print test_stress_2b
+send_to_b print test_stress_2b
+link_sim success_rate=98
+source_file_size 1000000
+get_and_put
+source_file_size 100000
+get_and_put*10
+source_file_size 123
+get_and_put*10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait_for_transaction_completion
+verify_file_transfers     ! Lots of concurrent transactions; pretty good link
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+!
+! 2C) Lots of transactions in both directions concurrently
+!     (poor link):
+!
+
+! For this test, we send lots of files (of various sizes) in both 
+! directions concurrently, and have the link-simulator drop 25% of the
+! PDUs.  There will be lots of concurrent filedata transmission, plus
+! concurrent filedata retransmission, plus concurent handshaking via
+! File Directives.
+!
+send_to_a print test_stress_2c
+send_to_b print test_stress_2c
+link_sim success_rate=75
+source_file_size 1000000
+get_and_put
+source_file_size 100000
+get_and_put*10
+source_file_size 123
+get_and_put*10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait_for_transaction_completion
+verify_file_transfers     ! Lots of concurrent transactions; poor link
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+!
+! 3) Large file (typical link):
+!
+
+! For this test, we send a large file, and have the link-simulator
+! simulate a link that is not as good as the typical near-Earth space link.
+!
+send_to_a print test_stress_3
+send_to_b print test_stress_3
+link_sim success_rate=98
+source_file_size 5000000
+put
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait_for_transaction_completion
+verify_file_transfers     ! Large file; typical link
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+!
+! 4) Lots of gaps in one transaction (more than MAX_GAPS_PER_TRANSACTION):
+!
+
+! Background: the engine can only store a limited number of Filedata gaps
+! for each transaction.  Suppose that number is 50.  Now, suppose that 
+! during the initial transmission of a file there are 100 filedata gaps.
+! The engine will only be able to store 50 gaps, yet it must be sure to
+! request retransmission of all the missing data.
+!
+! This test verifies that the engine can properly handle the situation
+! described above (i.e. that a Class 2 transaction completes successfully).
+! 
+send_to_a print test_stress_4
+send_to_b print test_stress_4
+link_sim success_rate=50
+source_file_size 1000000
+put
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait 10
+send_to_a summary
+send_to_b summary
+send_to_a v    ! show info about each trans
+send_to_b v    ! show info about each trans
+wait_for_transaction_completion
+verify_file_transfers     ! Lots of gaps in one transaction
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+send_to_a print test_stress_end
+send_to_b print test_stress_end
+
+! End of test.

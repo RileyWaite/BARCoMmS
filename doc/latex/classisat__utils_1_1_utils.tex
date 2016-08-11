@@ -1,0 +1,76 @@
+\hypertarget{classisat__utils_1_1_utils}{}\section{isat\+\_\+utils\+:\+:Utils Class Reference}
+\label{classisat__utils_1_1_utils}\index{isat\+\_\+utils\+::\+Utils@{isat\+\_\+utils\+::\+Utils}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classisat__utils_1_1_utils_ab5b16b0b9ff7f3f458ab2d850eb259f3}{parse\+Date\+Time} (std\+::string date\+Time, long \&time)
+\item 
+static int64\+\_\+t \hyperlink{classisat__utils_1_1_utils_a53ee27a594f5c783daab94541541c19a}{get\+System\+Time\+In\+Millis} ()
+\item 
+static void {\bfseries sleep\+In\+Millis} (int32\+\_\+t milliseconds\+To\+Sleep)\hypertarget{classisat__utils_1_1_utils_aa6bda8826690467e799f3946a83ae61c}{}\label{classisat__utils_1_1_utils_aa6bda8826690467e799f3946a83ae61c}
+
+\item 
+static void \hyperlink{classisat__utils_1_1_utils_aecf0017a2fa4ec92bca1620955f01629}{set\+Simulated\+Time} (int64\+\_\+t time\+In\+Millis)
+\item 
+static std\+::string {\bfseries format} (std\+::string format\+String, int val)\hypertarget{classisat__utils_1_1_utils_a3222adf94ea040280b5876b0e1ea1f9e}{}\label{classisat__utils_1_1_utils_a3222adf94ea040280b5876b0e1ea1f9e}
+
+\item 
+static std\+::string {\bfseries format} (std\+::string format\+String, float val)\hypertarget{classisat__utils_1_1_utils_af0a66457baa12089b113ef40e770baf6}{}\label{classisat__utils_1_1_utils_af0a66457baa12089b113ef40e770baf6}
+
+\item 
+static std\+::string {\bfseries format} (std\+::string format\+String, double val)\hypertarget{classisat__utils_1_1_utils_ab255e2ac01e0672ffda860715450c1f4}{}\label{classisat__utils_1_1_utils_ab255e2ac01e0672ffda860715450c1f4}
+
+\item 
+static bool {\bfseries parse\+Int} (char const $\ast$str, long \&value)\hypertarget{classisat__utils_1_1_utils_acb7102260abd465e15e357eb08ea1972}{}\label{classisat__utils_1_1_utils_acb7102260abd465e15e357eb08ea1972}
+
+\item 
+static bool {\bfseries parse\+Double} (char const $\ast$str, double \&value)\hypertarget{classisat__utils_1_1_utils_aa0b0b67b5531ffb304c05874f246f318}{}\label{classisat__utils_1_1_utils_aa0b0b67b5531ffb304c05874f246f318}
+
+\item 
+static bool {\bfseries parse\+Bool} (char const $\ast$str, bool \&value)\hypertarget{classisat__utils_1_1_utils_a0796a15e05892cf9249e2d0d44599939}{}\label{classisat__utils_1_1_utils_a0796a15e05892cf9249e2d0d44599939}
+
+\item 
+static bool {\bfseries parse\+Hex} (char const $\ast$str, long \&value)\hypertarget{classisat__utils_1_1_utils_a716edf53a4312d088e70552a825eb555}{}\label{classisat__utils_1_1_utils_a716edf53a4312d088e70552a825eb555}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+Utils@{isat\+\_\+utils\+::\+Utils}!get\+System\+Time\+In\+Millis@{get\+System\+Time\+In\+Millis}}
+\index{get\+System\+Time\+In\+Millis@{get\+System\+Time\+In\+Millis}!isat\+\_\+utils\+::\+Utils@{isat\+\_\+utils\+::\+Utils}}
+\subsubsection[{\texorpdfstring{get\+System\+Time\+In\+Millis()}{getSystemTimeInMillis()}}]{\setlength{\rightskip}{0pt plus 5cm}int64\+\_\+t isat\+\_\+utils\+::\+Utils\+::get\+System\+Time\+In\+Millis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classisat__utils_1_1_utils_a53ee27a594f5c783daab94541541c19a}{}\label{classisat__utils_1_1_utils_a53ee27a594f5c783daab94541541c19a}
+Gets the system time in milliseconds since the unix epoch.
+
+\begin{DoxyReturn}{Returns}
+time in milliseconds (unix epoch) 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+Utils@{isat\+\_\+utils\+::\+Utils}!parse\+Date\+Time@{parse\+Date\+Time}}
+\index{parse\+Date\+Time@{parse\+Date\+Time}!isat\+\_\+utils\+::\+Utils@{isat\+\_\+utils\+::\+Utils}}
+\subsubsection[{\texorpdfstring{parse\+Date\+Time(std\+::string date\+Time, long \&time)}{parseDateTime(std::string dateTime, long &time)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+Utils\+::parse\+Date\+Time (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{date\+Time, }
+\item[{long \&}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classisat__utils_1_1_utils_ab5b16b0b9ff7f3f458ab2d850eb259f3}{}\label{classisat__utils_1_1_utils_ab5b16b0b9ff7f3f458ab2d850eb259f3}
+Converts string representation of a date and time in the format \char`\"{}\+Y\+Y\+Y-\/\+M\+M-\/\+D\+D H\+H\+:\+M\+M\+:\+S\+S\char`\"{} into seconds since unix epoch.
+
+\begin{DoxyReturn}{Returns}
+true If conversion was successful. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+Utils@{isat\+\_\+utils\+::\+Utils}!set\+Simulated\+Time@{set\+Simulated\+Time}}
+\index{set\+Simulated\+Time@{set\+Simulated\+Time}!isat\+\_\+utils\+::\+Utils@{isat\+\_\+utils\+::\+Utils}}
+\subsubsection[{\texorpdfstring{set\+Simulated\+Time(int64\+\_\+t time\+In\+Millis)}{setSimulatedTime(int64_t timeInMillis)}}]{\setlength{\rightskip}{0pt plus 5cm}void isat\+\_\+utils\+::\+Utils\+::set\+Simulated\+Time (
+\begin{DoxyParamCaption}
+\item[{int64\+\_\+t}]{time\+In\+Millis}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classisat__utils_1_1_utils_aecf0017a2fa4ec92bca1620955f01629}{}\label{classisat__utils_1_1_utils_aecf0017a2fa4ec92bca1620955f01629}
+For testing purposes, it\textquotesingle{}s handy to be able to always start the flight software at the same time. \hyperlink{classisat__utils_1_1_utils_aecf0017a2fa4ec92bca1620955f01629}{set\+Simulated\+Time()} will cause system time to be reported a if the system clock had been set to time\+In\+Millis at the time the method is called. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Utils.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Utils.\+cpp\end{DoxyCompactItemize}

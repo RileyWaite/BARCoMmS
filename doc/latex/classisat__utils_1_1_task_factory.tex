@@ -1,0 +1,54 @@
+\hypertarget{classisat__utils_1_1_task_factory}{}\section{isat\+\_\+utils\+:\+:Task\+Factory Class Reference}
+\label{classisat__utils_1_1_task_factory}\index{isat\+\_\+utils\+::\+Task\+Factory@{isat\+\_\+utils\+::\+Task\+Factory}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classisat__utils_1_1_task_factory_a0e5b385029369df726e5d1640502d65d}{Task\+Factory} (\hyperlink{classisat__utils_1_1_file}{File} plugin\+Directory\+Path)
+\item 
+I\+S\+A\+T\+Task $\ast$ \hyperlink{classisat__utils_1_1_task_factory_aab7bb04112a9a47383b8c08bef56bf20}{create\+Task} (\hyperlink{classisat__utils_1_1_string}{String} task\+Name, \hyperlink{classisat__utils_1_1_string}{String} plugin\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classisat__utils_1_1_file}{File} {\bfseries plugin\+Dir}\hypertarget{classisat__utils_1_1_task_factory_ab1e529c2ca3de47b918fb809f2de9697}{}\label{classisat__utils_1_1_task_factory_ab1e529c2ca3de47b918fb809f2de9697}
+
+\item 
+\hyperlink{classisat__utils_1_1_logger}{Logger} {\bfseries logger}\hypertarget{classisat__utils_1_1_task_factory_a14f2d0cb28d3afcf26be4bf2180a3bfa}{}\label{classisat__utils_1_1_task_factory_a14f2d0cb28d3afcf26be4bf2180a3bfa}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{isat\+\_\+utils\+::\+Task\+Factory@{isat\+\_\+utils\+::\+Task\+Factory}!Task\+Factory@{Task\+Factory}}
+\index{Task\+Factory@{Task\+Factory}!isat\+\_\+utils\+::\+Task\+Factory@{isat\+\_\+utils\+::\+Task\+Factory}}
+\subsubsection[{\texorpdfstring{Task\+Factory(\+File plugin\+Directory\+Path)}{TaskFactory(File pluginDirectoryPath)}}]{\setlength{\rightskip}{0pt plus 5cm}isat\+\_\+utils\+::\+Task\+Factory\+::\+Task\+Factory (
+\begin{DoxyParamCaption}
+\item[{{\bf File}}]{plugin\+Directory\+Path}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_task_factory_a0e5b385029369df726e5d1640502d65d}{}\label{classisat__utils_1_1_task_factory_a0e5b385029369df726e5d1640502d65d}
+Create a task factory that can load and create tasks from dynamic libraries located in the specified plugin directory. 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+Task\+Factory@{isat\+\_\+utils\+::\+Task\+Factory}!create\+Task@{create\+Task}}
+\index{create\+Task@{create\+Task}!isat\+\_\+utils\+::\+Task\+Factory@{isat\+\_\+utils\+::\+Task\+Factory}}
+\subsubsection[{\texorpdfstring{create\+Task(\+String task\+Name, String plugin\+Name)}{createTask(String taskName, String pluginName)}}]{\setlength{\rightskip}{0pt plus 5cm}I\+S\+A\+T\+Task $\ast$ isat\+\_\+utils\+::\+Task\+Factory\+::create\+Task (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{task\+Name, }
+\item[{{\bf String}}]{plugin\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_task_factory_aab7bb04112a9a47383b8c08bef56bf20}{}\label{classisat__utils_1_1_task_factory_aab7bb04112a9a47383b8c08bef56bf20}
+Create a task with the given name using the \char`\"{}create\+Task\char`\"{} function in the specified plugin.
+
+
+\begin{DoxyParams}{Parameters}
+{\em task\+Name} & -\/ the name given to the task instance created. \\
+\hline
+{\em plugin\+Name} & -\/ The name of the dynamic library (.so) minus the \char`\"{}.\+so\char`\"{} part. Example \char`\"{}gps\char`\"{} refers to \char`\"{}gps.\+so\char`\"{}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Task\+Factory.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Task\+Factory.\+cpp\end{DoxyCompactItemize}

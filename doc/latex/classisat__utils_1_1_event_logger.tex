@@ -1,0 +1,67 @@
+\hypertarget{classisat__utils_1_1_event_logger}{}\section{isat\+\_\+utils\+:\+:Event\+Logger Class Reference}
+\label{classisat__utils_1_1_event_logger}\index{isat\+\_\+utils\+::\+Event\+Logger@{isat\+\_\+utils\+::\+Event\+Logger}}
+
+
+{\ttfamily \#include $<$Event\+Logger.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classisat__utils_1_1_event_logger_aa388db265b9d3ae2267bdb92a3a348fa}{Event\+Logger} (int origin, std\+::string file)
+\item 
+void \hyperlink{classisat__utils_1_1_event_logger_afa7b30b55dde728d55e5fb1cd865d768}{advisory} (int event\+Code, int linenum, std\+::string message=\char`\"{}\char`\"{})
+\item 
+void \hyperlink{classisat__utils_1_1_event_logger_abc20515e43ecdcdaa8cdcf85c1e0aa87}{advisory\+Start} (int event\+Code, int linenum, std\+::string message=\char`\"{}\char`\"{})
+\item 
+void {\bfseries advisory\+End} (int event\+Code, int linenum, std\+::string message=\char`\"{}\char`\"{})\hypertarget{classisat__utils_1_1_event_logger_a40144ea68f8f43f09dd3d9ed3079be44}{}\label{classisat__utils_1_1_event_logger_a40144ea68f8f43f09dd3d9ed3079be44}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries origin}\hypertarget{classisat__utils_1_1_event_logger_a8395abd5c58cfcc3272d277bbdb1d453}{}\label{classisat__utils_1_1_event_logger_a8395abd5c58cfcc3272d277bbdb1d453}
+
+\item 
+std\+::string {\bfseries file}\hypertarget{classisat__utils_1_1_event_logger_aa7129e5a84e978151f2432d7a43dcdb9}{}\label{classisat__utils_1_1_event_logger_aa7129e5a84e978151f2432d7a43dcdb9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Adaptor for Even\+Manager. Makes it easy(er) to create and log events. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{isat\+\_\+utils\+::\+Event\+Logger@{isat\+\_\+utils\+::\+Event\+Logger}!Event\+Logger@{Event\+Logger}}
+\index{Event\+Logger@{Event\+Logger}!isat\+\_\+utils\+::\+Event\+Logger@{isat\+\_\+utils\+::\+Event\+Logger}}
+\subsubsection[{\texorpdfstring{Event\+Logger(int origin, std\+::string file)}{EventLogger(int origin, std::string file)}}]{\setlength{\rightskip}{0pt plus 5cm}isat\+\_\+utils\+::\+Event\+Logger\+::\+Event\+Logger (
+\begin{DoxyParamCaption}
+\item[{int}]{origin, }
+\item[{std\+::string}]{file}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_event_logger_aa388db265b9d3ae2267bdb92a3a348fa}{}\label{classisat__utils_1_1_event_logger_aa388db265b9d3ae2267bdb92a3a348fa}
+Create an \hyperlink{classisat__utils_1_1_event_logger}{Event\+Logger} that will log events with the specified origin and file. 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+Event\+Logger@{isat\+\_\+utils\+::\+Event\+Logger}!advisory@{advisory}}
+\index{advisory@{advisory}!isat\+\_\+utils\+::\+Event\+Logger@{isat\+\_\+utils\+::\+Event\+Logger}}
+\subsubsection[{\texorpdfstring{advisory(int event\+Code, int linenum, std\+::string message="""")}{advisory(int eventCode, int linenum, std::string message="")}}]{\setlength{\rightskip}{0pt plus 5cm}void isat\+\_\+utils\+::\+Event\+Logger\+::advisory (
+\begin{DoxyParamCaption}
+\item[{int}]{event\+Code, }
+\item[{int}]{linenum, }
+\item[{std\+::string}]{message = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_event_logger_afa7b30b55dde728d55e5fb1cd865d768}{}\label{classisat__utils_1_1_event_logger_afa7b30b55dde728d55e5fb1cd865d768}
+Issue an advisory level point event (single instant in time). \index{isat\+\_\+utils\+::\+Event\+Logger@{isat\+\_\+utils\+::\+Event\+Logger}!advisory\+Start@{advisory\+Start}}
+\index{advisory\+Start@{advisory\+Start}!isat\+\_\+utils\+::\+Event\+Logger@{isat\+\_\+utils\+::\+Event\+Logger}}
+\subsubsection[{\texorpdfstring{advisory\+Start(int event\+Code, int linenum, std\+::string message="""")}{advisoryStart(int eventCode, int linenum, std::string message="")}}]{\setlength{\rightskip}{0pt plus 5cm}void isat\+\_\+utils\+::\+Event\+Logger\+::advisory\+Start (
+\begin{DoxyParamCaption}
+\item[{int}]{event\+Code, }
+\item[{int}]{linenum, }
+\item[{std\+::string}]{message = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_event_logger_abc20515e43ecdcdaa8cdcf85c1e0aa87}{}\label{classisat__utils_1_1_event_logger_abc20515e43ecdcdaa8cdcf85c1e0aa87}
+Issue and advisory level range event. This is the start of the range. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Event\+Logger.\+h\end{DoxyCompactItemize}

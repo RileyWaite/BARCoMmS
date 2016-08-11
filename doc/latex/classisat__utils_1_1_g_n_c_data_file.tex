@@ -1,0 +1,48 @@
+\hypertarget{classisat__utils_1_1_g_n_c_data_file}{}\section{isat\+\_\+utils\+:\+:G\+N\+C\+Data\+File Class Reference}
+\label{classisat__utils_1_1_g_n_c_data_file}\index{isat\+\_\+utils\+::\+G\+N\+C\+Data\+File@{isat\+\_\+utils\+::\+G\+N\+C\+Data\+File}}
+
+
+{\ttfamily \#include $<$G\+N\+C\+Data\+File.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries open} (\hyperlink{classisat__utils_1_1_string}{String} filename)\hypertarget{classisat__utils_1_1_g_n_c_data_file_ae11b406b9dd075b2e2b043b19038569e}{}\label{classisat__utils_1_1_g_n_c_data_file_ae11b406b9dd075b2e2b043b19038569e}
+
+\item 
+bool \hyperlink{classisat__utils_1_1_g_n_c_data_file_a6a89eb1aa7ec3874cb8d1570dd590880}{get\+Line} ()
+\item 
+double {\bfseries get\+Double} (int column)\hypertarget{classisat__utils_1_1_g_n_c_data_file_ab22f80a46bc9cac5f7ba740b58e2eb56}{}\label{classisat__utils_1_1_g_n_c_data_file_ab22f80a46bc9cac5f7ba740b58e2eb56}
+
+\item 
+bool {\bfseries close} ()\hypertarget{classisat__utils_1_1_g_n_c_data_file_a4c16d6555f8048eaf78d429daf542cb3}{}\label{classisat__utils_1_1_g_n_c_data_file_a4c16d6555f8048eaf78d429daf542cb3}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simple asbstraction to read and parse a comma separated value (C\+SV) file.
+
+\hyperlink{classisat__utils_1_1_g_n_c_data_file}{G\+N\+C\+Data\+File} infile; infile.\+open(\char`\"{}foo.\+csv\char`\"{});
+
+while(infile.\+get\+Line()) \{ int param1 = infile.\+get\+Int(26, 0); // Read column 26 as int, default value 0 double param2 = infile.\+get\+Double(14, 3.\+14); // Read column 14 as double, default value 3.\+14. \}
+
+infile.\+close(); 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+G\+N\+C\+Data\+File@{isat\+\_\+utils\+::\+G\+N\+C\+Data\+File}!get\+Line@{get\+Line}}
+\index{get\+Line@{get\+Line}!isat\+\_\+utils\+::\+G\+N\+C\+Data\+File@{isat\+\_\+utils\+::\+G\+N\+C\+Data\+File}}
+\subsubsection[{\texorpdfstring{get\+Line()}{getLine()}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+G\+N\+C\+Data\+File\+::get\+Line (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_g_n_c_data_file_a6a89eb1aa7ec3874cb8d1570dd590880}{}\label{classisat__utils_1_1_g_n_c_data_file_a6a89eb1aa7ec3874cb8d1570dd590880}
+Reads the next line in the file and makes it available to be parsed by the get$\ast$() methods. \begin{DoxyReturn}{Returns}
+false if no lines are left to read. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/G\+N\+C\+Data\+File.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/G\+N\+C\+Data\+File.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,245 @@
+\hypertarget{classisat__utils_1_1_string}{}\section{isat\+\_\+utils\+:\+:String Class Reference}
+\label{classisat__utils_1_1_string}\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+
+
+{\ttfamily \#include $<$String.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classisat__utils_1_1_string_a016361e98c3ebbc6b6df8137c38077c1}{String} ()
+\item 
+\hyperlink{classisat__utils_1_1_string_a3f219032bba25fc4c499abb963badb9f}{String} (char const $\ast$charstring)
+\item 
+\hyperlink{classisat__utils_1_1_string_a6c36434fa43495939a12eab3e5421081}{String} (\hyperlink{classisat__utils_1_1_string}{String} const \&rhs)
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} \& \hyperlink{classisat__utils_1_1_string_a49c95362b94c3b62d3f6765105c7a7ba}{operator=} (\hyperlink{classisat__utils_1_1_string}{String} rhs)
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} \& {\bfseries operator+=} (\hyperlink{classisat__utils_1_1_string}{String} rhs)\hypertarget{classisat__utils_1_1_string_a6f91ae8be5b77eb7697f111198c0fa6c}{}\label{classisat__utils_1_1_string_a6f91ae8be5b77eb7697f111198c0fa6c}
+
+\item 
+bool \hyperlink{classisat__utils_1_1_string_a44073c5213f18e79e2a78e32665e5a35}{operator==} (\hyperlink{classisat__utils_1_1_string}{String} rhs)
+\item 
+bool {\bfseries operator!=} (\hyperlink{classisat__utils_1_1_string}{String} rhs)\hypertarget{classisat__utils_1_1_string_a040e21b8c7f6befc168c6561406f2164}{}\label{classisat__utils_1_1_string_a040e21b8c7f6befc168c6561406f2164}
+
+\item 
+bool {\bfseries operator$<$} (\hyperlink{classisat__utils_1_1_string}{String} rhs)\hypertarget{classisat__utils_1_1_string_a89b85a69bde172d3b30c7373a86527ae}{}\label{classisat__utils_1_1_string_a89b85a69bde172d3b30c7373a86527ae}
+
+\item 
+bool {\bfseries operator$>$} (\hyperlink{classisat__utils_1_1_string}{String} rhs)\hypertarget{classisat__utils_1_1_string_a7c30434daf5b2c1210f68d4058249d1e}{}\label{classisat__utils_1_1_string_a7c30434daf5b2c1210f68d4058249d1e}
+
+\item 
+int \hyperlink{classisat__utils_1_1_string_aebbe51bc0a66580e6fae5a8df6e8197d}{length} () const 
+\item 
+int \hyperlink{classisat__utils_1_1_string_ace3e7442c0f491e40a3d2591a9f23032}{capacity} () const 
+\item 
+void \hyperlink{classisat__utils_1_1_string_a63c3cd6bb9e714631bd8c6220a114f21}{clear} ()
+\item 
+char const $\ast$ \hyperlink{classisat__utils_1_1_string_adb9a310b21d6ae57c5a4402343f55af1}{c\+\_\+str} () const 
+\item 
+bool \hyperlink{classisat__utils_1_1_string_a8a62556f24cc9bee02190b36166fccae}{char\+At} (int index, char \&c)
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} {\bfseries substring} (int startpos, int \hyperlink{classisat__utils_1_1_string_aebbe51bc0a66580e6fae5a8df6e8197d}{length})\hypertarget{classisat__utils_1_1_string_af0323aab236cf048cfbd141adaab2606}{}\label{classisat__utils_1_1_string_af0323aab236cf048cfbd141adaab2606}
+
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} \hyperlink{classisat__utils_1_1_string_a895148a2d7201b1e45ed863ada35ed0d}{to\+Lower} () const 
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} \hyperlink{classisat__utils_1_1_string_a3995ede4119f8b094cdb4ffdf73d7e59}{to\+Upper} () const 
+\item 
+bool {\bfseries parse\+Int} (long \&value)\hypertarget{classisat__utils_1_1_string_a28f610edff258863dc1a5a2c396aab4d}{}\label{classisat__utils_1_1_string_a28f610edff258863dc1a5a2c396aab4d}
+
+\item 
+bool {\bfseries parse\+Double} (double \&value)\hypertarget{classisat__utils_1_1_string_a402816d16b35457fdbee9c6ac3390e6b}{}\label{classisat__utils_1_1_string_a402816d16b35457fdbee9c6ac3390e6b}
+
+\item 
+bool {\bfseries parse\+Bool} (bool \&value)\hypertarget{classisat__utils_1_1_string_a3dae7076e632c06f368ebf135bf7face}{}\label{classisat__utils_1_1_string_a3dae7076e632c06f368ebf135bf7face}
+
+\item 
+bool {\bfseries parse\+Hex} (long \&value)\hypertarget{classisat__utils_1_1_string_ad18ef87cc71dbb4e5b84f7ba5dc8c03a}{}\label{classisat__utils_1_1_string_ad18ef87cc71dbb4e5b84f7ba5dc8c03a}
+
+\item 
+bool \hyperlink{classisat__utils_1_1_string_a13d1ca3a639362ddc294de879a0345fa}{matches} (\hyperlink{classisat__utils_1_1_string}{String} regex) const 
+\item 
+\hyperlink{classisat__utils_1_1_array_list}{Array\+List}$<$ \hyperlink{classisat__utils_1_1_string}{String} $>$ {\bfseries split} (\hyperlink{classisat__utils_1_1_string}{String} regex) const \hypertarget{classisat__utils_1_1_string_a632bc227a1d158e511f1d2abf52f6bc2}{}\label{classisat__utils_1_1_string_a632bc227a1d158e511f1d2abf52f6bc2}
+
+\item 
+\hyperlink{classisat__utils_1_1_string_a4c903ee6fadb521dac0d4ff2686c3384}{$\sim$\+String} ()
+\item 
+bool \hyperlink{classisat__utils_1_1_string_a6cc57bb76f496f68ed9f4e2d0d19514b}{error} () const 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classisat__utils_1_1_string}{String} {\bfseries format} (\hyperlink{classisat__utils_1_1_string}{String} format\+String, int val)\hypertarget{classisat__utils_1_1_string_ac31a5a9fbcbbc2b90a71332fb550ba27}{}\label{classisat__utils_1_1_string_ac31a5a9fbcbbc2b90a71332fb550ba27}
+
+\item 
+static \hyperlink{classisat__utils_1_1_string}{String} {\bfseries format} (\hyperlink{classisat__utils_1_1_string}{String} format\+String, float val)\hypertarget{classisat__utils_1_1_string_a8b7108ef6f8c8a5226d858dc79dfc8bd}{}\label{classisat__utils_1_1_string_a8b7108ef6f8c8a5226d858dc79dfc8bd}
+
+\item 
+static \hyperlink{classisat__utils_1_1_string}{String} {\bfseries format} (\hyperlink{classisat__utils_1_1_string}{String} format\+String, double val)\hypertarget{classisat__utils_1_1_string_a5147fa966d10e0e07344becb2a3dd62d}{}\label{classisat__utils_1_1_string_a5147fa966d10e0e07344becb2a3dd62d}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& {\bfseries operator$<$$<$} (ostream \&ostr, \hyperlink{classisat__utils_1_1_string}{String} const \&str)\hypertarget{classisat__utils_1_1_string_ad2ff8448e2de2f974409f5f07a8f573e}{}\label{classisat__utils_1_1_string_ad2ff8448e2de2f974409f5f07a8f573e}
+
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} {\bfseries operator+} (\hyperlink{classisat__utils_1_1_string}{String} a, \hyperlink{classisat__utils_1_1_string}{String} b)\hypertarget{classisat__utils_1_1_string_a2c096e418f6306df9220fd3aefb3e84e}{}\label{classisat__utils_1_1_string_a2c096e418f6306df9220fd3aefb3e84e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class provides a basic string class.
+
+We\textquotesingle{}re not using S\+TL or boost because of the ban on exceptions. This class provides a string class which provides modern string like behavior\+: Dynamic allocated memory, regular expressions, operations on strings, conversion to and from char$\ast$, etc. Not perfect, but better than chasing char$\ast$ all over the place.
+
+X\+XX\+: Modify this class to resize. \hyperlink{classisat__utils_1_1_file}{File} needs it and it\textquotesingle{}s just dumb not to. --jamie 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!String@{String}}
+\index{String@{String}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{String()}{String()}}]{\setlength{\rightskip}{0pt plus 5cm}isat\+\_\+utils\+::\+String\+::\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_string_a016361e98c3ebbc6b6df8137c38077c1}{}\label{classisat__utils_1_1_string_a016361e98c3ebbc6b6df8137c38077c1}
+Default constructor. \index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!String@{String}}
+\index{String@{String}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{String(char const $\ast$charstring)}{String(char const *charstring)}}]{\setlength{\rightskip}{0pt plus 5cm}isat\+\_\+utils\+::\+String\+::\+String (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{charstring}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_string_a3f219032bba25fc4c499abb963badb9f}{}\label{classisat__utils_1_1_string_a3f219032bba25fc4c499abb963badb9f}
+Construct a \hyperlink{classisat__utils_1_1_string}{String} instance and initialize from the specified null terminated char$\ast$ string. \index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!String@{String}}
+\index{String@{String}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{String(\+String const \&rhs)}{String(String const &rhs)}}]{\setlength{\rightskip}{0pt plus 5cm}isat\+\_\+utils\+::\+String\+::\+String (
+\begin{DoxyParamCaption}
+\item[{{\bf String} const \&}]{rhs}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_string_a6c36434fa43495939a12eab3e5421081}{}\label{classisat__utils_1_1_string_a6c36434fa43495939a12eab3e5421081}
+Copy constructor. \index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!````~String@{$\sim$\+String}}
+\index{````~String@{$\sim$\+String}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{$\sim$\+String()}{~String()}}]{\setlength{\rightskip}{0pt plus 5cm}isat\+\_\+utils\+::\+String\+::$\sim$\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_string_a4c903ee6fadb521dac0d4ff2686c3384}{}\label{classisat__utils_1_1_string_a4c903ee6fadb521dac0d4ff2686c3384}
+Destructor. 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!c\+\_\+str@{c\+\_\+str}}
+\index{c\+\_\+str@{c\+\_\+str}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{c\+\_\+str() const }{c_str() const }}]{\setlength{\rightskip}{0pt plus 5cm}char const $\ast$ isat\+\_\+utils\+::\+String\+::c\+\_\+str (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_string_adb9a310b21d6ae57c5a4402343f55af1}{}\label{classisat__utils_1_1_string_adb9a310b21d6ae57c5a4402343f55af1}
+Access the null terminated \textquotesingle{}C\textquotesingle{} string representation of this instance.
+
+\begin{DoxyReturn}{Returns}
+A pointed to the null terminated C string encapsulated by this \hyperlink{classisat__utils_1_1_string}{String} instance. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!capacity@{capacity}}
+\index{capacity@{capacity}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{capacity() const }{capacity() const }}]{\setlength{\rightskip}{0pt plus 5cm}int isat\+\_\+utils\+::\+String\+::capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_string_ace3e7442c0f491e40a3d2591a9f23032}{}\label{classisat__utils_1_1_string_ace3e7442c0f491e40a3d2591a9f23032}
+The capacity is the maximum number of characters that can be stored in this \hyperlink{classisat__utils_1_1_string}{String} instance.
+
+\begin{DoxyReturn}{Returns}
+Capacity of this instance. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!char\+At@{char\+At}}
+\index{char\+At@{char\+At}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{char\+At(int index, char \&c)}{charAt(int index, char &c)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+String\+::char\+At (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{char \&}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_string_a8a62556f24cc9bee02190b36166fccae}{}\label{classisat__utils_1_1_string_a8a62556f24cc9bee02190b36166fccae}
+Get the character at string position \textquotesingle{}index\textquotesingle{}. Positions start a zero (first character) through length -\/1.
+
+\begin{DoxyReturn}{Returns}
+false if index is out of range. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!clear@{clear}}
+\index{clear@{clear}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{clear()}{clear()}}]{\setlength{\rightskip}{0pt plus 5cm}void isat\+\_\+utils\+::\+String\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_string_a63c3cd6bb9e714631bd8c6220a114f21}{}\label{classisat__utils_1_1_string_a63c3cd6bb9e714631bd8c6220a114f21}
+Resets length of this instance to zero. \index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!error@{error}}
+\index{error@{error}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{error() const }{error() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+String\+::error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_string_a6cc57bb76f496f68ed9f4e2d0d19514b}{}\label{classisat__utils_1_1_string_a6cc57bb76f496f68ed9f4e2d0d19514b}
+Determine if this instance is valid (no errors have occured).
+
+\begin{DoxyReturn}{Returns}
+true if instance is valid (can be used). 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!length@{length}}
+\index{length@{length}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{length() const }{length() const }}]{\setlength{\rightskip}{0pt plus 5cm}int isat\+\_\+utils\+::\+String\+::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_string_aebbe51bc0a66580e6fae5a8df6e8197d}{}\label{classisat__utils_1_1_string_aebbe51bc0a66580e6fae5a8df6e8197d}
+The length of a string is the number of characters (not including the null terminator) currently stored in this \hyperlink{classisat__utils_1_1_string}{String} instance.
+
+\begin{DoxyReturn}{Returns}
+Number of characters currently stored (not including null terminator). 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!matches@{matches}}
+\index{matches@{matches}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{matches(\+String regex) const }{matches(String regex) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+String\+::matches (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{regex}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_string_a13d1ca3a639362ddc294de879a0345fa}{}\label{classisat__utils_1_1_string_a13d1ca3a639362ddc294de879a0345fa}
+Determine if this instance matches the given P\+O\+S\+IX regular expression.
+
+\begin{DoxyReturn}{Returns}
+true if this instance matches the regex. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!operator=@{operator=}}
+\index{operator=@{operator=}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{operator=(\+String rhs)}{operator=(String rhs)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} \& isat\+\_\+utils\+::\+String\+::operator= (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{rhs}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_string_a49c95362b94c3b62d3f6765105c7a7ba}{}\label{classisat__utils_1_1_string_a49c95362b94c3b62d3f6765105c7a7ba}
+Assignment operator. \index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!operator==@{operator==}}
+\index{operator==@{operator==}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{operator==(\+String rhs)}{operator==(String rhs)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+String\+::operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{rhs}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_string_a44073c5213f18e79e2a78e32665e5a35}{}\label{classisat__utils_1_1_string_a44073c5213f18e79e2a78e32665e5a35}
+Equality operator. \index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!to\+Lower@{to\+Lower}}
+\index{to\+Lower@{to\+Lower}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{to\+Lower() const }{toLower() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} isat\+\_\+utils\+::\+String\+::to\+Lower (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_string_a895148a2d7201b1e45ed863ada35ed0d}{}\label{classisat__utils_1_1_string_a895148a2d7201b1e45ed863ada35ed0d}
+Return a copy of the string converted to lower case. \index{isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}!to\+Upper@{to\+Upper}}
+\index{to\+Upper@{to\+Upper}!isat\+\_\+utils\+::\+String@{isat\+\_\+utils\+::\+String}}
+\subsubsection[{\texorpdfstring{to\+Upper() const }{toUpper() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} isat\+\_\+utils\+::\+String\+::to\+Upper (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_string_a3995ede4119f8b094cdb4ffdf73d7e59}{}\label{classisat__utils_1_1_string_a3995ede4119f8b094cdb4ffdf73d7e59}
+Return a copy of the string converted to upper case. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/String.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/String.\+cpp\end{DoxyCompactItemize}

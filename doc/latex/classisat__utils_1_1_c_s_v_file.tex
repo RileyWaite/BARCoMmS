@@ -1,0 +1,54 @@
+\hypertarget{classisat__utils_1_1_c_s_v_file}{}\section{isat\+\_\+utils\+:\+:C\+S\+V\+File Class Reference}
+\label{classisat__utils_1_1_c_s_v_file}\index{isat\+\_\+utils\+::\+C\+S\+V\+File@{isat\+\_\+utils\+::\+C\+S\+V\+File}}
+
+
+{\ttfamily \#include $<$C\+S\+V\+File.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries open} (\hyperlink{classisat__utils_1_1_string}{String} filename)\hypertarget{classisat__utils_1_1_c_s_v_file_a991bc05745a6fe746c1a7da8b977db73}{}\label{classisat__utils_1_1_c_s_v_file_a991bc05745a6fe746c1a7da8b977db73}
+
+\item 
+bool \hyperlink{classisat__utils_1_1_c_s_v_file_af56251c0c090c574631137f7e424ae15}{get\+Line} ()
+\item 
+int {\bfseries get\+Int} (int column, int default\+Value)\hypertarget{classisat__utils_1_1_c_s_v_file_adf3fb9b1a9d6485a29fe130feab4cd29}{}\label{classisat__utils_1_1_c_s_v_file_adf3fb9b1a9d6485a29fe130feab4cd29}
+
+\item 
+double {\bfseries get\+Double} (int column, double default\+Value)\hypertarget{classisat__utils_1_1_c_s_v_file_a0da5fed556adaf00b7ebab7845206269}{}\label{classisat__utils_1_1_c_s_v_file_a0da5fed556adaf00b7ebab7845206269}
+
+\item 
+bool {\bfseries get\+Bool} (int column, bool default\+Value)\hypertarget{classisat__utils_1_1_c_s_v_file_a99e474ab83db4fa6b28121c33b6127af}{}\label{classisat__utils_1_1_c_s_v_file_a99e474ab83db4fa6b28121c33b6127af}
+
+\item 
+bool {\bfseries close} ()\hypertarget{classisat__utils_1_1_c_s_v_file_a5ebc0c933cee943ddc8e087752353cb2}{}\label{classisat__utils_1_1_c_s_v_file_a5ebc0c933cee943ddc8e087752353cb2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simple asbstraction to read and parse a comma separated value (C\+SV) file.
+
+\hyperlink{classisat__utils_1_1_c_s_v_file}{C\+S\+V\+File} infile; infile.\+open(\char`\"{}foo.\+csv\char`\"{});
+
+while(infile.\+get\+Line()) \{ int param1 = infile.\+get\+Int(26, 0); // Read column 26 as int, default value 0 double param2 = infile.\+get\+Double(14, 3.\+14); // Read column 14 as double, default value 3.\+14. \}
+
+infile.\+close(); 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+C\+S\+V\+File@{isat\+\_\+utils\+::\+C\+S\+V\+File}!get\+Line@{get\+Line}}
+\index{get\+Line@{get\+Line}!isat\+\_\+utils\+::\+C\+S\+V\+File@{isat\+\_\+utils\+::\+C\+S\+V\+File}}
+\subsubsection[{\texorpdfstring{get\+Line()}{getLine()}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+C\+S\+V\+File\+::get\+Line (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_c_s_v_file_af56251c0c090c574631137f7e424ae15}{}\label{classisat__utils_1_1_c_s_v_file_af56251c0c090c574631137f7e424ae15}
+Reads the next line in the file and makes it available to be parsed by the get$\ast$() methods. \begin{DoxyReturn}{Returns}
+false if no lines are left to read. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/C\+S\+V\+File.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/C\+S\+V\+File.\+cpp\end{DoxyCompactItemize}

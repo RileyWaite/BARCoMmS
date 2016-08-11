@@ -1,0 +1,77 @@
+\hypertarget{classisat__trek_1_1_event___telemetry}{}\section{isat\+\_\+trek\+:\+:Event\+\_\+\+Telemetry Class Reference}
+\label{classisat__trek_1_1_event___telemetry}\index{isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry@{isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry}}
+Inheritance diagram for isat\+\_\+trek\+:\+:Event\+\_\+\+Telemetry\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classisat__trek_1_1_event___telemetry}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{classisat__trek_1_1_event___telemetry_aeea8da6424ee67eec4783cf53fcce4ca}{from\+Bytes} (Byte\+Buffer \&buf)
+\item 
+virtual bool \hyperlink{classisat__trek_1_1_event___telemetry_aedaa07bcddc941db908689f3289213e5}{to\+Bytes} (Byte\+Buffer \&buf)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries timestamp}\hypertarget{classisat__trek_1_1_event___telemetry_a1ddfd222fcc09dd7da710543cd368148}{}\label{classisat__trek_1_1_event___telemetry_a1ddfd222fcc09dd7da710543cd368148}
+
+\item 
+int {\bfseries type}\hypertarget{classisat__trek_1_1_event___telemetry_ac865ca7ad8d313ce40cf84e1036032a0}{}\label{classisat__trek_1_1_event___telemetry_ac865ca7ad8d313ce40cf84e1036032a0}
+
+\item 
+int {\bfseries severity}\hypertarget{classisat__trek_1_1_event___telemetry_a55ad53758f65fd0c32515a2ce903182c}{}\label{classisat__trek_1_1_event___telemetry_a55ad53758f65fd0c32515a2ce903182c}
+
+\item 
+int {\bfseries origin\+Id}\hypertarget{classisat__trek_1_1_event___telemetry_a233400eebddaeca29a85417b78445ad4}{}\label{classisat__trek_1_1_event___telemetry_a233400eebddaeca29a85417b78445ad4}
+
+\item 
+int {\bfseries code}\hypertarget{classisat__trek_1_1_event___telemetry_a6ff1f1fbee3c402ded8a60a4d8e799bd}{}\label{classisat__trek_1_1_event___telemetry_a6ff1f1fbee3c402ded8a60a4d8e799bd}
+
+\item 
+int {\bfseries message}\hypertarget{classisat__trek_1_1_event___telemetry_aebba74d8fcb7d175d36ae963ffca5c76}{}\label{classisat__trek_1_1_event___telemetry_aebba74d8fcb7d175d36ae963ffca5c76}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry@{isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry}!from\+Bytes@{from\+Bytes}}
+\index{from\+Bytes@{from\+Bytes}!isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry@{isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry}}
+\subsubsection[{\texorpdfstring{from\+Bytes(\+Byte\+Buffer \&buf)}{fromBytes(ByteBuffer &buf)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry\+::from\+Bytes (
+\begin{DoxyParamCaption}
+\item[{Byte\+Buffer \&}]{buf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classisat__trek_1_1_event___telemetry_aeea8da6424ee67eec4783cf53fcce4ca}{}\label{classisat__trek_1_1_event___telemetry_aeea8da6424ee67eec4783cf53fcce4ca}
+Populate the header and command fields from the data in buf.
+
+\begin{DoxyReturn}{Returns}
+true if successful. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classisat__trek_1_1_packet}{isat\+\_\+trek\+::\+Packet}.
+
+\index{isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry@{isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry}!to\+Bytes@{to\+Bytes}}
+\index{to\+Bytes@{to\+Bytes}!isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry@{isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry}}
+\subsubsection[{\texorpdfstring{to\+Bytes(\+Byte\+Buffer \&buf)}{toBytes(ByteBuffer &buf)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+trek\+::\+Event\+\_\+\+Telemetry\+::to\+Bytes (
+\begin{DoxyParamCaption}
+\item[{Byte\+Buffer \&}]{buf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classisat__trek_1_1_event___telemetry_aedaa07bcddc941db908689f3289213e5}{}\label{classisat__trek_1_1_event___telemetry_aedaa07bcddc941db908689f3289213e5}
+Create the binary representation of this instance in the specified buffer.
+
+\begin{DoxyReturn}{Returns}
+true if successful. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classisat__trek_1_1_packet}{isat\+\_\+trek\+::\+Packet}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/trek/telemetry/Event\+\_\+\+Telemetry.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/trek/telemetry/Event\+\_\+\+Telemetry.\+cpp\end{DoxyCompactItemize}

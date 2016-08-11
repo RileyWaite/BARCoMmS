@@ -1,0 +1,110 @@
+\hypertarget{classisat__utils_1_1_configuration_database}{}\section{isat\+\_\+utils\+:\+:Configuration\+Database Class Reference}
+\label{classisat__utils_1_1_configuration_database}\index{isat\+\_\+utils\+::\+Configuration\+Database@{isat\+\_\+utils\+::\+Configuration\+Database}}
+
+
+{\ttfamily \#include $<$Configuration\+Database.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classisat__utils_1_1_configuration_database_afc0a79457de05c204ee8b8381646d5c6}{load} (\hyperlink{classisat__utils_1_1_file}{File} config\+Directory)
+\item 
+bool \hyperlink{classisat__utils_1_1_configuration_database_a33e1432c59eef927e6a7edcd94c6b7fe}{exists} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name) const 
+\item 
+bool {\bfseries get\+Bool} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, bool default\+Value=false) const \hypertarget{classisat__utils_1_1_configuration_database_a97df465d1b0b77ff1d2f5b072cfd5a00}{}\label{classisat__utils_1_1_configuration_database_a97df465d1b0b77ff1d2f5b072cfd5a00}
+
+\item 
+long {\bfseries get\+Int} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, long default\+Value=0) const \hypertarget{classisat__utils_1_1_configuration_database_a263c773df281c83d8356b9eb54078a1f}{}\label{classisat__utils_1_1_configuration_database_a263c773df281c83d8356b9eb54078a1f}
+
+\item 
+double {\bfseries get\+Real} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, double default\+Value=0.\+0f) const \hypertarget{classisat__utils_1_1_configuration_database_ae2c0eb4bb1c6f6f414fb0cff369c22df}{}\label{classisat__utils_1_1_configuration_database_ae2c0eb4bb1c6f6f414fb0cff369c22df}
+
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} \hyperlink{classisat__utils_1_1_configuration_database_a284544bd461710785a45f45144e83000}{get\+String} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, \hyperlink{classisat__utils_1_1_string}{String} default\+Value=\char`\"{}\char`\"{}) const 
+\item 
+void {\bfseries set\+Bool} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, bool value)\hypertarget{classisat__utils_1_1_configuration_database_a27569866fd1119f2cdb4071e3e3f30cb}{}\label{classisat__utils_1_1_configuration_database_a27569866fd1119f2cdb4071e3e3f30cb}
+
+\item 
+void {\bfseries set\+Int} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, long value)\hypertarget{classisat__utils_1_1_configuration_database_ab40a92697891b6330e59e17732d1a972}{}\label{classisat__utils_1_1_configuration_database_ab40a92697891b6330e59e17732d1a972}
+
+\item 
+void {\bfseries set\+Real} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, double value)\hypertarget{classisat__utils_1_1_configuration_database_a287e2182a22f187a808a2adbdb23b6a2}{}\label{classisat__utils_1_1_configuration_database_a287e2182a22f187a808a2adbdb23b6a2}
+
+\item 
+void {\bfseries set\+String} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, \hyperlink{classisat__utils_1_1_string}{String} value)\hypertarget{classisat__utils_1_1_configuration_database_a5292b904ee847227c62ea3c7d44d3ec7}{}\label{classisat__utils_1_1_configuration_database_a5292b904ee847227c62ea3c7d44d3ec7}
+
+\item 
+\hyperlink{classisat__utils_1_1_array_list}{Array\+List}$<$ \hyperlink{classisat__utils_1_1_string}{String} $>$ {\bfseries get\+Param\+Names} () const \hypertarget{classisat__utils_1_1_configuration_database_a60ece82305aad223f81b04cd730827f2}{}\label{classisat__utils_1_1_configuration_database_a60ece82305aad223f81b04cd730827f2}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classisat__utils_1_1_configuration_database}{Configuration\+Database} \& {\bfseries get\+Instance} ()\hypertarget{classisat__utils_1_1_configuration_database_ae0d9c0f437a4313de7a7845c98d0429f}{}\label{classisat__utils_1_1_configuration_database_ae0d9c0f437a4313de7a7845c98d0429f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries parse\+Config} (json\+\_\+t $\ast$jsonobj)\hypertarget{classisat__utils_1_1_configuration_database_ae7f1dcdabef0a0d7b00739014daffbe4}{}\label{classisat__utils_1_1_configuration_database_ae7f1dcdabef0a0d7b00739014daffbe4}
+
+\item 
+bool {\bfseries find\+Param} (\hyperlink{classisat__utils_1_1_string}{String} param\+Name, int \&index) const \hypertarget{classisat__utils_1_1_configuration_database_ae2f3ff5553bef7ccf187d5088408088a}{}\label{classisat__utils_1_1_configuration_database_ae2f3ff5553bef7ccf187d5088408088a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classisat__utils_1_1_array_list}{Array\+List}$<$ \hyperlink{structisat__utils_1_1_conf_d_b_record}{Conf\+D\+B\+Record} $>$ {\bfseries symboltable}\hypertarget{classisat__utils_1_1_configuration_database_affd1efd34ebbec7f83375d4da911cfe5}{}\label{classisat__utils_1_1_configuration_database_affd1efd34ebbec7f83375d4da911cfe5}
+
+\item 
+\hyperlink{classisat__utils_1_1_logger}{Logger} {\bfseries logger}\hypertarget{classisat__utils_1_1_configuration_database_a09cb5bd5df5adbd1b55070a169d0b0d0}{}\label{classisat__utils_1_1_configuration_database_a09cb5bd5df5adbd1b55070a169d0b0d0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classisat__utils_1_1_configuration_database}{Configuration\+Database} provides access to the contents of the configuration files in the config/ directory.
+
+The load method should be called once to initialize the database, passing the location of the config/ directory. All configuration files with extension \char`\"{}.\+cfg\char`\"{} are passed to a lua interpreter instance for parsing / execution. 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+Configuration\+Database@{isat\+\_\+utils\+::\+Configuration\+Database}!exists@{exists}}
+\index{exists@{exists}!isat\+\_\+utils\+::\+Configuration\+Database@{isat\+\_\+utils\+::\+Configuration\+Database}}
+\subsubsection[{\texorpdfstring{exists(\+String param\+Name) const }{exists(String paramName) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+Configuration\+Database\+::exists (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{param\+Name}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_configuration_database_a33e1432c59eef927e6a7edcd94c6b7fe}{}\label{classisat__utils_1_1_configuration_database_a33e1432c59eef927e6a7edcd94c6b7fe}
+Determine if a parameter has a value in the database. \begin{DoxyReturn}{Returns}
+true if parameter exists. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+Configuration\+Database@{isat\+\_\+utils\+::\+Configuration\+Database}!get\+String@{get\+String}}
+\index{get\+String@{get\+String}!isat\+\_\+utils\+::\+Configuration\+Database@{isat\+\_\+utils\+::\+Configuration\+Database}}
+\subsubsection[{\texorpdfstring{get\+String(\+String param\+Name, String default\+Value="""") const }{getString(String paramName, String defaultValue="") const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} isat\+\_\+utils\+::\+Configuration\+Database\+::get\+String (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{param\+Name, }
+\item[{{\bf String}}]{default\+Value = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_configuration_database_a284544bd461710785a45f45144e83000}{}\label{classisat__utils_1_1_configuration_database_a284544bd461710785a45f45144e83000}
+Get a string value from the configuration database. Callers should not free the returned pointer, the memory is managed by \hyperlink{classisat__utils_1_1_configuration_database}{Configuration\+Database}.
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+Configuration\+Database@{isat\+\_\+utils\+::\+Configuration\+Database}!load@{load}}
+\index{load@{load}!isat\+\_\+utils\+::\+Configuration\+Database@{isat\+\_\+utils\+::\+Configuration\+Database}}
+\subsubsection[{\texorpdfstring{load(\+File config\+Directory)}{load(File configDirectory)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+Configuration\+Database\+::load (
+\begin{DoxyParamCaption}
+\item[{{\bf File}}]{config\+Directory}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_configuration_database_afc0a79457de05c204ee8b8381646d5c6}{}\label{classisat__utils_1_1_configuration_database_afc0a79457de05c204ee8b8381646d5c6}
+Load all configuration files located in directory config\+Path. \begin{DoxyReturn}{Returns}
+true if load was successful. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Configuration\+Database.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Configuration\+Database.\+cpp\end{DoxyCompactItemize}

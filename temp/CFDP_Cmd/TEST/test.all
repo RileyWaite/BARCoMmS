@@ -1,0 +1,5 @@
+run test.ccsds
+run test.stress
+run test.gpm
+send_to_a exit
+send_to_b exit

@@ -1,0 +1,105 @@
+/* This module was written by me, Riley Waite, during my second
+ * Summer intenship at Marshall Space Flight Center under mentors
+ * Jamie Moyers (unofficial) and Scott Akridge (official).
+ *
+ * It' i's late July, 2016, and I am seventeen years old. This
+ * software likely won't go far, but I've greatly enjoyed
+ * working on it and doing so with some great friends.
+ */
+
+
+#ifndef BC_DITL_H
+#define BC_DITL_H
+
+#include <QMainWindow>
+
+#include <fstream>
+
+#include "../../../../utils/EventDatabase.h"
+
+#include "../dependencies/net/UDPConnection.h"
+#include "../dependencies/bc_Event.h"
+
+#include "bc_ditl_colorLib.h"
+#include "bc_ditl_legend.h"
+#include "bc_ditl_graph.h"
+
+#include "ui_bc_ditl.h"
+
+namespace Ui {
+class BC_DITL;
+}
+
+class BC_DITL : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    explicit BC_DITL(QWidget *parent = 0);
+    ~BC_DITL(); ///< Deletes the UI object
+
+protected:
+    void closeEvent(QCloseEvent*);
+
+signals:
+    void dying();
+
+private slots:
+    void treeItemClicked(QTreeWidgetItem*,int); ///< Highlights graphicsview event when its respective tree event is double-clicked
+    void on_actionShowLegend_triggered(); ///< Logo button toolbar action
+    void on_actionZoom_triggered(); ///< Prompts user to change graph->timeStep; repaints if accepted
+    void pduReceived(ByteBuffer); ///< Called when PacketListenerThread receives a packet
+    void ditlLog(QString);
+
+private:
+    // Primary DITL UI object
+    Ui::BC_DITL *ui;
+
+    // Event file
+    std::fstream eventFile;
+
+    // <DB Singletons and UI Objects>
+    legend legendWindow; ///< legend UI object
+    EventDatabase db;   ///< Event database (eg getEventFromID(int))
+    Color colorDB;     ///< Color database (eg getColorFromString(string))
+    Graph *graph;     ///< Main graphicsview display information data singleton (eg coordinates, graphics items, events)
+    // </Singletons and UI Objects>
+
+    // <GraphicsView Stuff>
+    QPixmap *unboundedArrowRight; ///< Arrow to draw unboundedness
+    QGraphicsScene *graphScene;  ///< Main graphicsview's scene (child); where events/grid are painted
+    QGraphicsScene *nameScene;  ///< Left-most graphicsview's scene (child); where event name list is painted
+    QGraphicsScene *timeScene; ///< Lower graphicsview's scene (child); where timestamps are painted
+    QGraphicsItem *hl;  ///< Used to highlight double-clicked point events
+    // </GraphicsView Stuff>
+
+    // <Drawing stuff>
+    QPen *highlighter;   ///< Pen for highlighting on double-click
+    QPen *outlinePen;   ///< Black outline for all objects
+    QFont *eventFont;  ///< Times New Roman font
+    QPen *warningPen; ///< Red outline for events with Warning severity
+    QFont *timeFont; ///< Times New Roman font (small)
+    QPen *linePen;  ///< Pen to draw lines
+    // </Drawing stuff>
+
+    // TODO: See if we can get rid of these.
+    // I did a Ctrl+Shift+R on mainViewWidth and it IS NOT BEING USED ANYMORE
+
+    // <Geometries>
+    double eventHeight;   ///< Height (pixels) of event graphics items
+    // </Geometries>
+
+    // <Methods>
+    QString sevToQString(BC_Event::Severity); ///< Returns string equiv. of argued severity for tooltip, details, etc.
+
+    void addEvent(BC_Event*, bool refresh = false);  ///< Adds an event real-time without needing to refresh entire set
+    void ditlError(QString, QString); ///< Prints an error message to the event tree
+    void initTimes(uint64_t);  ///< Paints lower graphicsview with Timestamps (UTC)
+    void initEventNameList(); ///< Paints left-most graphicsview with Event names
+    void repaint(uint64_t);  ///< Repaints entire display with new graph->timeStep
+
+    void ditlLog(std::string); ///< Append message to log file
+    // </Methods>
+};
+
+#endif // BC_DITL_H

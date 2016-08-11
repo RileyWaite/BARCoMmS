@@ -1,0 +1,74 @@
+\hypertarget{class_b_c___event}{}\section{B\+C\+\_\+\+Event Class Reference}
+\label{class_b_c___event}\index{B\+C\+\_\+\+Event@{B\+C\+\_\+\+Event}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Severity} \{ {\bfseries A\+D\+V\+I\+S\+O\+RY} = 0, 
+{\bfseries C\+A\+U\+T\+I\+ON} = 1, 
+{\bfseries W\+A\+R\+N\+I\+NG} = 2
+ \}\hypertarget{class_b_c___event_a5eb4855476ea60e493118e250e27ea1e}{}\label{class_b_c___event_a5eb4855476ea60e493118e250e27ea1e}
+
+\item 
+enum {\bfseries Event\+Type} \{ {\bfseries P\+O\+I\+NT} = 0, 
+{\bfseries S\+T\+A\+RT} = 1, 
+{\bfseries E\+ND} = 2
+ \}\hypertarget{class_b_c___event_af0659c0fa8f9fad210dc9be784232b19}{}\label{class_b_c___event_af0659c0fa8f9fad210dc9be784232b19}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries B\+C\+\_\+\+Event} (uint64\+\_\+t, int, int, int, int, std\+::string, std\+::string, int)\hypertarget{class_b_c___event_a68ce3b239302b717104c8eb7f40e4bef}{}\label{class_b_c___event_a68ce3b239302b717104c8eb7f40e4bef}
+
+\item 
+{\bfseries B\+C\+\_\+\+Event} (std\+::string in)\hypertarget{class_b_c___event_af78e84637a9875dec516e185f35c1d1c}{}\label{class_b_c___event_af78e84637a9875dec516e185f35c1d1c}
+
+\item 
+Q\+Date\+Time {\bfseries get\+U\+TC} ()\hypertarget{class_b_c___event_a1760bf16d64ca7f717c8802b4a59df4d}{}\label{class_b_c___event_a1760bf16d64ca7f717c8802b4a59df4d}
+
+\item 
+bool {\bfseries read} (std\+::string in)\hypertarget{class_b_c___event_aae93e7ef80d9e7884391835dfe95cdcf}{}\label{class_b_c___event_aae93e7ef80d9e7884391835dfe95cdcf}
+
+\item 
+bool {\bfseries write} (std\+::fstream \&out)\hypertarget{class_b_c___event_af5ed2ed542f460db793ad623b9aacd3a}{}\label{class_b_c___event_af5ed2ed542f460db793ad623b9aacd3a}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Q\+Date\+Time {\bfseries get\+U\+TC} (uint64\+\_\+t)\hypertarget{class_b_c___event_a3fc59df9986ed204e38c5ecb5cbf3a11}{}\label{class_b_c___event_a3fc59df9986ed204e38c5ecb5cbf3a11}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t {\bfseries time}\hypertarget{class_b_c___event_acd269f4dbdbdb27d4994998b6c669559}{}\label{class_b_c___event_acd269f4dbdbdb27d4994998b6c669559}
+
+\item 
+int {\bfseries code}\hypertarget{class_b_c___event_ac6686c20f280941419bf8c6fc9d7cb44}{}\label{class_b_c___event_ac6686c20f280941419bf8c6fc9d7cb44}
+
+\item 
+int {\bfseries origin}\hypertarget{class_b_c___event_a4a67d0557454551f825a01fa77872db7}{}\label{class_b_c___event_a4a67d0557454551f825a01fa77872db7}
+
+\item 
+Event\+Type {\bfseries event\+Type}\hypertarget{class_b_c___event_a7fb69f25ec2f6fa377d680d140c61d99}{}\label{class_b_c___event_a7fb69f25ec2f6fa377d680d140c61d99}
+
+\item 
+Severity {\bfseries severity}\hypertarget{class_b_c___event_a8ea390d80d78ac9800b929611fcbff20}{}\label{class_b_c___event_a8ea390d80d78ac9800b929611fcbff20}
+
+\item 
+std\+::string {\bfseries message}\hypertarget{class_b_c___event_aff93fcb88a819232bd85f4328939b9a9}{}\label{class_b_c___event_aff93fcb88a819232bd85f4328939b9a9}
+
+\item 
+std\+::string {\bfseries filename}\hypertarget{class_b_c___event_aae5aeacf68d313f8c0473510a5eb9388}{}\label{class_b_c___event_aae5aeacf68d313f8c0473510a5eb9388}
+
+\item 
+int {\bfseries line\+Number}\hypertarget{class_b_c___event_ace00f024ebc3e5e00f9472768c84a563}{}\label{class_b_c___event_ace00f024ebc3e5e00f9472768c84a563}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/bc\+\_\+\+Event.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/bc\+\_\+\+Event.\+cpp\end{DoxyCompactItemize}

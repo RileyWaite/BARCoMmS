@@ -1,0 +1,44 @@
+MIB Parameters
+	Issue EOF-Sent Indication? Yes
+	Issue EOF-Received Indication? Yes
+	Issue File-Segment-Sent Indication? No
+	Issue File-Segment-Received Indication? No
+	Issue Resumed Indication? Yes
+	Issue Suspended Indication? Yes
+	Issue Transaction-Finished Indication? Yes
+	Save Incomplete Files? No
+	ACK Limit: 25
+	ACK Timeout: 5
+	NAK Limit: 25
+	NAK Timeout: 5
+	Inactivity Timeout: 86400
+	Outgoing File Chunk Size (Bytes): 65200
+	Node ID: 130
+
+Message Class Parameters
+	Indications: 1
+	Debug Memory Use: 0
+	Debug NAK: 0
+	Debug PDU: 0
+	PDU Filedata: 0
+	PDU Non-Filedata: 1
+	PDU Retransmitted FD: 0
+	State All: 0
+	State Change: 0
+
+Link Simulator Parameters
+	Success Rate (%): 100
+	Delay Between PDUs (milliseconds): 0
+	Mode: sim normal
+	Corruption: sim corrupt_none
+
+Options
+	Transfer Type: Class 2
+	Receiver's Entity ID: 24
+	File Destination: /home/ben/Desktop/testOut
+
+Misc.
+	Cycles Between Updates: 200
+	Buffer Size: 500
+	Log Events? 0
+	Auto Scroll? 1

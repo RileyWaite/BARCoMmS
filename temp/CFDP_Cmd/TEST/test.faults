@@ -1,0 +1,412 @@
+!! FILE: test.faults
+!! WHAT IT DOES:  Verifies the CFDP engine's handling of Faults.
+
+
+send_to_a print faults-begin
+send_to_b print faults-begin
+
+
+
+!
+! Faults-1 -- positive-ack-limit-reached
+!
+
+
+! Faults-1a -- at Class 2 Sender
+! Cause a positive-ack-limit-reached fault at the Sender by setting the
+! 'Ack-limit' to 1 (no retransmission of EOF allowed) and dropping the
+! first EOF pdu.
+send_to_a print faults-1a
+send_to_b print faults-1a
+source_file_size 1000
+mib ack_limit 1
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 100
+mib inactivity_timeout 600
+link_sim success_rate=100
+link_sim drop_one_eof
+put
+wait_for_transaction_completion
+verify_condition_code Positive_ack_limit_reached
+clear_between_tests
+
+
+! Faults-1b -- at Class 2 Receiver
+! Cause a positive-ack-limit-reached fault at the Receiver by setting the
+! 'ack-limit' to 1 (no retransmission of Finished PDU allowed) and dropping
+! the first Finished PDU.
+send_to_a print faults-1b
+send_to_b print faults-1b
+source_file_size 100000
+mib ack_limit 1
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 5
+mib inactivity_timeout 600
+link_sim drop_one_fin
+link_sim success_rate=100
+wait 1       ; give named-pipe time to deliver link-sim directives
+put
+wait_for_transaction_completion
+verify_condition_code Positive_ack_limit_reached
+clear_between_tests
+
+
+
+!
+! Faults-2 -- filestore-rejection
+!
+
+
+! Faults-2a -- at Class 2 Sender
+! Cause a 'filestore-rejection' fault at the Sender by requesting the
+! transfer of a non-existent file.
+!!! This is now obsolete due to an optimization that causes Filestore
+!!! Rejection at the Sending end to be determined *before* starting
+!!! a state machine.
+!send_to_a print faults-2a
+!send_to_b print faults-2a
+!source_file_size 1000
+!mib ack_limit 1
+!mib ack_timeout 5
+!mib nak_limit 5
+!mib nak_timeout 100
+!mib inactivity_timeout 600
+!link_sim normal
+!link_sim success_rate=100
+!send_to_a put boogie_on 1.24 88.tmp
+!wait_for_transaction_completion
+!verify_condition_code Filestore_rejection
+!clear_between_tests
+
+
+! Faults-2b -- at Class 2 Receiver
+! Cause a 'filestore-rejection' fault at the Receiver by specifying a
+! destination-file that cannot be accomodated (non-existent sub-directories
+! seems to do it).
+send_to_a print faults-2b
+send_to_b print faults-2b
+source_file_size 1000
+mib ack_limit 1
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 100
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=100
+send_to_a put test.faults 1.24 boogie/on/reggae/woman   
+wait_for_transaction_completion
+verify_condition_code Filestore_rejection
+clear_between_tests
+
+
+! Faults-2c -- at Class 1 Sender
+! Cause a 'filestore-rejection' fault at the Sender by requesting the
+! transfer of a non-existent file.
+! Details:  The Sender should send a Metadata, and then an EOF-Cancel
+!   with condition-code = Filestore_rejection.  Therefore, both Sender
+!   and Receiver should complete with condition-code = Filestore_rejection.
+!   
+send_to_a print faults-2c
+send_to_b print faults-2c
+source_file_size 1000
+mib inactivity_timeout 30
+link_sim normal
+link_sim success_rate=100
+send_to_a put -class1 boogie_on 1.24 88.tmp
+wait_for_transaction_completion
+verify_condition_code Filestore_rejection
+clear_between_tests
+
+
+!! Faults-2d -- at Class 1 Receiver
+! Cause a 'filestore-rejection' fault at the Receiver by specifying a
+! destination-file that cannot be accomodated (non-existent sub-directories
+! seems to do it).
+! Details:  The Sender shouldn't encounter any errors.  The Receiver should
+!  get a Filestore_rejection Fault.  Since there is no feedback to the
+!  Sender, the only Fault should be at the Receiver.
+!
+send_to_a print faults-2d
+send_to_b print faults-2d
+source_file_size 1000
+mib inactivity_timeout 30
+link_sim normal
+link_sim success_rate=100
+send_to_a put -class1 test.faults 1.24 boogie/on/reggae/woman   
+wait_for_transaction_completion
+verify_condition_code_at_a No_error
+verify_condition_code_at_b Filestore_rejection
+clear_between_tests
+
+
+
+!
+! Faults-3 -- File-checksum-failure
+! 
+
+
+! Faults-3a -- at Class 2 Receiver
+! We set up the link-sim to corrupt the EOF-checksum.
+send_to_a print faults-3a
+send_to_b print faults-3a
+source_file_size 1000
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 5
+mib inactivity_timeout 60
+link_sim corrupt_eof_checksum          ! the key to causing a fault
+link_sim success_rate=100
+put
+wait_for_transaction_completion
+verify_condition_code File_checksum_failure
+link_sim corrupt_none
+clear_between_tests
+
+
+! Faults-3b -- at Class 1 Receiver
+! We set up the link-sim to corrupt the EOF-checksum.
+! Note:  Since there is no feedback in Class 1, the Sender will not
+!   detect a fault.
+send_to_a print faults-3b
+send_to_b print faults-3b
+source_file_size 1000
+mib inactivity_timeout 60
+link_sim corrupt_eof_checksum          ! the key to causing a fault
+link_sim success_rate=100
+put_1
+wait_for_transaction_completion
+verify_condition_code_at_b File_checksum_failure    ! Receiver gets fault
+verify_condition_code_at_a No_error                 ! Sender does not
+link_sim corrupt_none
+clear_between_tests
+
+
+
+!
+! Faults-4 -- File-size-error
+!
+
+
+! Faults-4a -- at Class 2 Receiver
+! We set up the link-sim to corrupt the EOF file-size field.
+send_to_a print faults-4a
+send_to_b print faults-4a
+source_file_size 1000
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 5
+mib inactivity_timeout 60
+link_sim corrupt_eof_file_size          ! the key to causing a fault
+link_sim success_rate=100
+put
+wait_for_transaction_completion
+verify_condition_code File_size_error
+link_sim corrupt_none
+clear_between_tests
+
+
+
+! Faults-4b -- at Class 1 Receiver
+! We set up the link-sim to corrupt the EOF-checksum.
+! Note:  Since there is no feedback in Class 1, the Sender will not
+!   detect a fault.
+send_to_a print faults-4b
+send_to_b print faults-4b
+source_file_size 1000
+mib inactivity_timeout 60
+link_sim corrupt_eof_file_size          ! the key to causing a fault
+link_sim success_rate=100
+put_1
+wait_for_transaction_completion
+verify_condition_code_at_b File_size_error          ! Receiver gets fault
+verify_condition_code_at_a No_error                 ! Sender does not
+link_sim corrupt_none
+clear_between_tests
+
+
+
+!
+! Faults-5 -- Nak-limit-reached
+!
+
+
+! Faults-5a -- at Class 2 Receiver
+! Cause a 'nak-limit-reached' at the Receiver by:
+!  1) Have the Sender drop lots of outgoing pdus (but not all)
+!  2) Have the Receiver drop all outgoing Nak pdus.
+!  3) Set the ack-limit high, so that the Receiver's Finished-Cancel
+!     is sure to eventually get acknowledged (both sides are expected
+!     to complete with condition-code = nak-limit-reached).
+!     (Setting the ack-limit high also ensures that the Sender will not
+!     throw off the test by having an ack-limit fault.
+!
+send_to_a print faults-5a
+send_to_b print faults-5a
+source_file_size 1000000
+mib ack_limit 100
+mib ack_timeout 30
+mib nak_limit 2
+mib nak_timeout 2
+mib inactivity_timeout 300
+link_sim normal
+send_to_a sim success_rate=75
+send_to_b sim drop_all_nak
+put
+wait_for_transaction_completion
+verify_condition_code Nak_limit_reached
+clear_between_tests
+
+
+
+!
+! Faults-6 -- Inactivity-detected
+!
+
+
+! Faults-6a -- at Class 2 Sender
+!   First, allow all MD/FD/EOF/ACK pdus through the link-sim.  This ensures
+! that the Sender sees an Ack of its EOF PDU.  At that point, the Sender
+! will start its inactivity-timer (waiting for a Nak or Finished PDU).
+!   Second, have the link-sim drop all Finished PDUs.  This ensures that
+! the Sender's inactivity-timer will eventually expire.
+!   Third, set the Ack-limit high to ensure that the Receiver doesn't have an
+! 'ack-limit-reached' fault before the Sender's inactivity-timer expires
+! (it will eventually have an ack-limit-reached fault because it never sees
+! an Ack of its outgoing Finished PDUs).
+!   The Sender should send an EOF-Cancel (inactivity-detected), and the
+! Receiver should ack it.  Therefore, the ending condition-code on both
+! sides is 'inactivity-detected'.
+!
+send_to_a print faults-6a
+send_to_b print faults-6a
+source_file_size 10000
+mib ack_limit 100
+mib ack_timeout 5
+mib nak_limit 100
+mib nak_timeout 5
+mib inactivity_timeout 5
+link_sim success_rate=100
+link_sim drop_all_fin
+put
+wait_for_transaction_completion
+verify_condition_code Inactivity_detected
+clear_between_tests
+
+
+! Faults-6b -- at Class 2 Receiver
+!   First, ensure that some of the initial PDUs *do* get through to the
+! Receiver; otherwise, the Receiver will not have a transaction.  Once
+! the Receiver has a transaction, it will start the Inactivity-timer.
+! But - make sure the transaction doesn't complete successfully during
+! this initial stage.
+!   Second, drop all pdus for a while (long enough to cause the
+! Receiver's inactivity-timer to expire).  
+!   Third, once the inactivity-timer expires (and the Receiver initiates a
+! cancellation), reset the link-sim so that the Receiver's Finished-Cancel
+! PDU can be ack'd by the Sender.  Set the Ack-limit high, to ensure that
+! the Receiver doesn't automatically abandon the transaction if its
+! Finished-Cancel isn't promptly ack'd (also, to ensure that the Sender
+! doesn't have an 'ack-limit-reached' fault when its EOF PDU isn't 
+! promptly ack'd).
+!   This will ensure that both sides finish with cond-code inactivity-detected.
+!
+send_to_a print faults-6b
+send_to_b print faults-6b
+source_file_size 5000000
+mib ack_limit 100
+mib ack_timeout 5
+mib nak_limit 100
+mib nak_timeout 5
+mib inactivity_timeout 5
+link_sim normal
+link_sim success_rate=90      ! don't finish too soon
+put
+wait 2                        ! get some PDUs through
+link_sim drop_all             ! force inactivity-timer to expire
+wait_for_transaction_cancellation
+link_sim normal               ! allow Finished handshake to complete
+wait_for_transaction_completion
+verify_condition_code Inactivity_detected
+clear_between_tests
+
+
+! Note:  The Inactivity_detected Fault cannot occur in a Class 1 Sender
+!  (because it never gets any feedback from the Class 1 Receiver).
+!  Therefore, there is no test for Inactivity-detected by a Class 1 Sender.
+
+
+! Faults-6c -- at Class 1 Receiver
+!   First, ensure that some of the initial PDUs *do* get through to the
+! Receiver; otherwise, the Receiver will not have a transaction.  Once
+! the Receiver has a transaction, it will start the Inactivity-timer.
+! But - make sure the transaction doesn't complete successfully during
+! this initial stage.
+!   Second, drop all pdus for a while (long enough to cause the
+! Receiver's inactivity-timer to expire).  
+!
+send_to_a print faults-6c
+send_to_b print faults-6c
+source_file_size 5000000
+mib inactivity_timeout 5
+put_1
+wait 1                        ! get some PDUs through
+link_sim drop_all             ! force inactivity-timer to expire
+wait_for_transaction_completion
+verify_condition_code_at_a No_error      
+verify_condition_code_at_b Inactivity_detected
+clear_between_tests
+
+
+
+!
+! Faults-7 -- Verify that both Class 2 Sender and Class 2 Receiver will
+!             abandon a transaction if a Fault is encountered after a cancel
+!             of the transaction has been initiated.
+!
+!   First, we force both sides to encounter a fault.
+! This is accomplished by having the link-sim drop all Ack and Finished PDUs
+! (and put all other PDUs through).  The Sender has an 'ack-limit' fault
+! because its EOF PDU is never ack'd, and the Receiver also has an 'ack-limit'
+! fault because its Finished PDU is never ack'd.
+!   Second, both sides eventually have to abandon the transaction when
+! their EOF-Cancel and Finished-Cancel PDUs are not ack'd.
+!   Details follow:
+! Start a Class 2 file transfer, and drop all Acks and Finished PDUs.
+! The Sender's ack-timer will expire when its first EOF is not ack'd.
+! The Receiver will get the MD, all the FD, and the EOF.  It will send
+! an Ack-EOF (which gets dropped) and a Finished (which also gets dropped).
+! The Receiver's ack-timer will also expire when its first Finished is not
+! ack'd.
+!   Set the ack-limit low (1), so that both sides quickly get a
+! 'ack-limit-reached' fault.  
+!   The Sender will send an EOF-Cancel, and the Receiver will send a
+! Finished-Cancel.  Because all acks are dropped, they will both get 
+! *another* ack-limit fault.  Any fault which occurs while cancelling
+! should cause the transaction to be abandoned (in this case, abandoned
+! on both sides).
+!   
+send_to_a print faults-7
+send_to_b print faults-7
+source_file_size 100000
+mib ack_limit 1
+send_to_a set ack_timeout 10       
+send_to_b set ack_timeout 7        ! Ensure Receiver cancels before Sender.
+mib nak_limit 100
+mib nak_timeout 5
+mib inactivity_timeout 600
+link_sim drop_all_ack_and_fin
+wait 1    ! make sure both sides have link-sim set up prior to Put.
+put
+wait_for_transaction_completion
+verify_condition_code Positive_ack_limit_reached
+verify_abandoned Yes
+clear_between_tests
+
+
+send_to_a print faults-end
+send_to_b print faults-end
+

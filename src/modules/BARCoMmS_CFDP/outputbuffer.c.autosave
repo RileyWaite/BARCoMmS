@@ -1,0 +1,3 @@
+#include "outputbuffer.h"
+
+char buf[1025];

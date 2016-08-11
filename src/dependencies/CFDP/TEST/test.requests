@@ -1,0 +1,344 @@
+!! FILE: test.requests
+!! WHAT IT DOES:  Verifies the CFDP engine's handling of User Requests
+
+
+send_to_a print requests-begin
+send_to_b print requests-begin
+
+
+
+!
+! Requests-1 -- Put
+!
+
+
+! requests-1a -- Service Class 1
+! Request a Class 1 file transfer, and verify that it completes properly.
+send_to_a print requests-1a
+send_to_b print requests-1a
+source_file_size 1000
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=100
+put_1
+wait_for_transaction_completion
+verify_condition_code No_error
+verify_abandoned No
+verify_file_transfers
+clear_between_tests
+
+
+! requests-1b -- Service Class 2
+! Request a Class 2 file transfer, and verify that it completes properly.
+send_to_a print requests-1b
+send_to_b print requests-1b
+source_file_size 1000
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 5
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=100
+put
+wait_for_transaction_completion
+verify_condition_code No_error
+verify_abandoned No
+verify_file_transfers
+clear_between_tests
+
+
+
+!
+! Requests-2 -- Suspend and Resume
+!
+
+
+! Suspend and Resume of Class 1 file transfer.
+! The key is making sure that the file transfer does not complete before
+! the 'suspend' request arrives.
+!
+send_to_a print requests-2a
+send_to_b print requests-2a
+source_file_size 1000000
+mib inactivity_timeout 3600
+link_sim normal
+link_sim success_rate=100
+put_1
+send_to_a suspend all
+wait 30
+verify_transactions_exist
+send_to_a resume all
+wait_for_transaction_completion
+verify_condition_code No_error
+verify_abandoned No
+verify_file_transfers
+clear_between_tests
+
+
+! Suspend and Resume of Class 2 file transfer.
+! The key is making sure that the file transfer does not complete before
+! the 'suspend' request arrives.
+!
+send_to_a print requests-2b
+send_to_b print requests-2b
+source_file_size 100000
+mib ack_limit 2
+mib ack_timeout 5
+mib nak_limit 2
+mib nak_timeout 5
+mib inactivity_timeout 10
+link_sim drop_one_eof
+put
+send_to_a suspend all
+send_to_b suspend all
+wait 30
+verify_transactions_exist
+send_to_a resume all
+send_to_b resume all
+wait_for_transaction_completion
+verify_condition_code No_error
+verify_abandoned No
+verify_file_transfers
+clear_between_tests
+
+
+
+!
+! Requests-3 -- Cancel
+!
+
+
+! requests-3a -- Cancel Class 2 Sender
+! Request a Class 2 file transfer, then request a 'cancel' at the Sender.
+! Note: We have to ensure that the transaction doesn't complete successfully
+!   before the 'Cancel' is requested.  
+send_to_a print requests-3a
+send_to_b print requests-3a
+source_file_size 500000
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 100
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=90     ! don't finish too fast
+send_to_a set_trans_seq_num 11
+put
+send_to_a cancel 23_11
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+! requests-3b -- Cancel Class 2 Receiver
+! Request a Class 2 file transfer, then request a 'cancel' at the Receiver.
+! Note: We have to ensure that the transaction doesn't complete successfully
+!   before the 'Cancel' is requested.  
+send_to_a print requests-3b
+send_to_b print requests-3b
+source_file_size 500000
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 100
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=90     ! don't finish too fast
+send_to_a set_trans_seq_num 22
+put
+send_to_b cancel 23_22
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+! requests-3c -- Cancel Class 1 Sender
+! Request a Class 1 file transfer, then request a 'cancel' at the Sender.
+! Note: We have to ensure that the transaction doesn't complete successfully
+!   before the 'Cancel' is requested.  
+send_to_a print requests-3c
+send_to_b print requests-3c
+source_file_size 5000000
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=100
+send_to_a set_trans_seq_num 11
+put_1
+send_to_a cancel 23_11
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+! Note:  It doesn't make sense to test cancellation by a Class 1 Receiver
+!   because the Class 1 Sender will continue to blast data (because there
+!   is no feedback from the Class 1 Receiver to the Class 1 Sender).
+
+
+
+!
+! requests-4 -- Abandon
+
+
+! requests-4a -- Abandon a Class 2 Sender and Class 2 Receiver
+! Request a Class 2 file transfer, then request an 'abandon' at both ends.
+! Note: We have to ensure that the transaction doesn't complete successfully
+!   before the 'Abandon' is requested.  
+send_to_a print requests-4a
+send_to_b print requests-4a
+source_file_size 500000
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 5
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=90       ! don't finish too fast
+send_to_a set_trans_seq_num 33
+put
+send_to_a abandon 23_33
+send_to_b abandon 23_33
+wait_for_transaction_completion
+verify_abandoned Yes
+wait 10
+wait_for_transaction_completion     
+clear_between_tests
+
+
+! requests-4b -- Abandon a Class 1 Sender and Class 1 Receiver
+! Request a Class 2 file transfer, then request an 'abandon' at both ends.
+! Note: We have to ensure that the transaction doesn't complete successfully
+!   before the 'Abandon' is requested.  
+send_to_a print requests-4b
+send_to_b print requests-4b
+source_file_size 3000000         ! keep trans from completing too fast
+mib inactivity_timeout 600
+link_sim normal
+send_to_a set_trans_seq_num 44
+put_1
+send_to_a abandon 23_44
+send_to_b abandon 23_44
+wait_for_transaction_completion
+verify_abandoned Yes
+clear_between_tests
+
+
+
+!
+! requests-5 -- Suspend and Resume all transactions
+!
+
+
+! Start 2 transactions - one Class 1 and one Class 2.  Suspend all 
+! transactions, then wait a while and verify that the transactions haven't
+! completed.  Resume all transactions and verify that they complete
+! successfully.
+send_to_a print requests-5
+send_to_b print requests-5
+source_file_size 3000000         ! keep trans from completing too fast
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 5
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=100
+send_to_a set_trans_seq_num 55
+put
+put_1
+send_to_a suspend all
+send_to_b suspend 23_55          ! can only suspend Receiver if Class 2
+wait 30
+verify_transactions_exist
+send_to_a resume all
+send_to_b resume 23_55           ! can only resume Receiver if Class 2
+wait_for_transaction_completion
+verify_condition_code No_error
+verify_abandoned No
+verify_file_transfers
+clear_between_tests
+
+
+
+!
+! requests-6 -- Cancel all transactions
+!
+
+! Request 3 Class 2 file transfers, then 'cancel' them all.
+! Note: We have to ensure that the transactions don't complete successfully
+!   before the 'Cancel' is requested.  
+send_to_a print requests-6
+send_to_b print requests-6
+source_file_size 500000
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 100
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=90      ! don't finish too fast
+put*3
+send_to_a cancel all
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+
+! 
+! requests-7 -- Abandon all transactions
+!
+
+
+! requests-7a -- Abandon all transactions...
+! Request multiple file transfers (of both Classes), then 'abandon' them all.
+! Note: We have to ensure that the transactions don't complete successfully
+!   before the 'abandon' is requested.  
+send_to_a print requests-7a
+send_to_b print requests-7a
+mib ack_limit 100
+mib ack_timeout 5
+mib nak_limit 100
+mib nak_timeout 5
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=90
+source_file_size 3000000
+put*2
+put_1
+put_1
+link_sim drop_all
+send_to_a abandon all
+wait 1
+send_to_b abandon all
+wait 10
+wait_for_transaction_completion
+verify_abandoned Yes
+clear_between_tests
+
+
+! requests-7b -- Make sure things cleared out ok after Abandoning.
+!                (Try a simple Class 2 file transfer)
+send_to_a print requests-7b
+send_to_b print requests-7b
+source_file_size 1000
+mib ack_limit 5
+mib ack_timeout 5
+mib nak_limit 5
+mib nak_timeout 5
+mib inactivity_timeout 600
+link_sim normal
+link_sim success_rate=100
+put
+wait_for_transaction_completion
+verify_condition_code No_error
+verify_abandoned No
+verify_file_transfers
+clear_between_tests
+
+
+
+send_to_a print requests-end
+send_to_b print requests-end
+

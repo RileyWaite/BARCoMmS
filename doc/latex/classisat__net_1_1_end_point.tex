@@ -1,0 +1,84 @@
+\hypertarget{classisat__net_1_1_end_point}{}\section{isat\+\_\+net\+:\+:End\+Point Class Reference}
+\label{classisat__net_1_1_end_point}\index{isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}}
+
+
+{\ttfamily \#include $<$End\+Point.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries End\+Point} (\hyperlink{classisat__utils_1_1_string}{String} host, int port=0)\hypertarget{classisat__net_1_1_end_point_a01c39ec95d01dee0b26b62bd252bfdc0}{}\label{classisat__net_1_1_end_point_a01c39ec95d01dee0b26b62bd252bfdc0}
+
+\item 
+{\bfseries End\+Point} (int port)\hypertarget{classisat__net_1_1_end_point_af00285be71b71cb6dd93cf09ab54fd39}{}\label{classisat__net_1_1_end_point_af00285be71b71cb6dd93cf09ab54fd39}
+
+\item 
+bool \hyperlink{classisat__net_1_1_end_point_afbbe067c11aab5bb65de09aca5c4aa3a}{set\+Host} (\hyperlink{classisat__utils_1_1_string}{String} address)
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} {\bfseries get\+Host} () const \hypertarget{classisat__net_1_1_end_point_a4e9cfb1be0f724e75297b2e884ab25a3}{}\label{classisat__net_1_1_end_point_a4e9cfb1be0f724e75297b2e884ab25a3}
+
+\item 
+bool \hyperlink{classisat__net_1_1_end_point_a16cf3d8eefa9ef59ba2e0a900d1e6d25}{set\+Port} (int port)
+\item 
+int {\bfseries get\+Port} () const \hypertarget{classisat__net_1_1_end_point_a80b1837608f51597cbef8951bd352ad4}{}\label{classisat__net_1_1_end_point_a80b1837608f51597cbef8951bd352ad4}
+
+\item 
+bool \hyperlink{classisat__net_1_1_end_point_a4473813fe9fbe7c6dbc07a0965b7e961}{get\+I\+P\+Address} (\hyperlink{classisat__utils_1_1_string}{String} \&ip\+Address) const 
+\item 
+bool \hyperlink{classisat__net_1_1_end_point_aa26abb544d9e5ac9ea5c2bb409447ad4}{get\+Inet\+Addr} (struct in\+\_\+addr \&addr) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An Endpoint represents an (ip address, port) tuple. The host can be either a hostname or ip address in the dotted quad format. 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}!get\+Inet\+Addr@{get\+Inet\+Addr}}
+\index{get\+Inet\+Addr@{get\+Inet\+Addr}!isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}}
+\subsubsection[{\texorpdfstring{get\+Inet\+Addr(struct in\+\_\+addr \&addr) const }{getInetAddr(struct in_addr &addr) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+net\+::\+End\+Point\+::get\+Inet\+Addr (
+\begin{DoxyParamCaption}
+\item[{struct in\+\_\+addr \&}]{addr}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__net_1_1_end_point_aa26abb544d9e5ac9ea5c2bb409447ad4}{}\label{classisat__net_1_1_end_point_aa26abb544d9e5ac9ea5c2bb409447ad4}
+Convert the current host address into a binary representation (inet\+\_\+aton).
+
+\begin{DoxyReturn}{Returns}
+true if the address converted. 
+\end{DoxyReturn}
+\index{isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}!get\+I\+P\+Address@{get\+I\+P\+Address}}
+\index{get\+I\+P\+Address@{get\+I\+P\+Address}!isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}}
+\subsubsection[{\texorpdfstring{get\+I\+P\+Address(\+String \&ip\+Address) const }{getIPAddress(String &ipAddress) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+net\+::\+End\+Point\+::get\+I\+P\+Address (
+\begin{DoxyParamCaption}
+\item[{{\bf String} \&}]{ip\+Address}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__net_1_1_end_point_a4473813fe9fbe7c6dbc07a0965b7e961}{}\label{classisat__net_1_1_end_point_a4473813fe9fbe7c6dbc07a0965b7e961}
+Get the ip address for the current host.
+
+\begin{DoxyReturn}{Returns}
+true if the current host is valid (has an ip address). 
+\end{DoxyReturn}
+\index{isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}!set\+Host@{set\+Host}}
+\index{set\+Host@{set\+Host}!isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}}
+\subsubsection[{\texorpdfstring{set\+Host(\+String address)}{setHost(String address)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+net\+::\+End\+Point\+::set\+Host (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{address}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__net_1_1_end_point_afbbe067c11aab5bb65de09aca5c4aa3a}{}\label{classisat__net_1_1_end_point_afbbe067c11aab5bb65de09aca5c4aa3a}
+Set the host for this end point, as either a hostname or dotted quad (\char`\"{}192.\+168.\+6.\+3\char`\"{}).
+
+\begin{DoxyReturn}{Returns}
+true if the host is valid (a host name resolves to an ip address or correctly format dotted quad.) 
+\end{DoxyReturn}
+\index{isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}!set\+Port@{set\+Port}}
+\index{set\+Port@{set\+Port}!isat\+\_\+net\+::\+End\+Point@{isat\+\_\+net\+::\+End\+Point}}
+\subsubsection[{\texorpdfstring{set\+Port(int port)}{setPort(int port)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+net\+::\+End\+Point\+::set\+Port (
+\begin{DoxyParamCaption}
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__net_1_1_end_point_a16cf3d8eefa9ef59ba2e0a900d1e6d25}{}\label{classisat__net_1_1_end_point_a16cf3d8eefa9ef59ba2e0a900d1e6d25}
+Port must be in range \mbox{[}0, 65535\mbox{]}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/net/End\+Point.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/net/End\+Point.\+cpp\end{DoxyCompactItemize}

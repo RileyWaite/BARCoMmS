@@ -1,0 +1,39 @@
+/ Specify which two CFDP nodes to use:
+node 23
+node 1.24
+
+/ Configure CFDP to allow lots of retransmission cycles:
+mib ack_timeout 2
+mib ack_limit 10000
+mib nak_timeout 2
+mib nak_limit 10000
+mib inactivity_timeout 360000
+
+/ Configure the Link Simulator to simply deliver a specified percentage
+/ of traffic (that percentage will be specifed within each test; this
+/ statement chooses the appropriate Link Simulator 'mode'):
+link_sim normal
+link_sim success_rate=99
+
+send_to_a Link_Output_Only
+send_to_b Link_Input_Only
+source_file_size 100000
+put*100     //!!! 1000
+
+wait 60     //!!! 3600
+
+// Ask CFDP nodes to display a list of their transactions:
+send_to_a summary
+send_to_b summary
+
+send_to_a Link_Two_Way
+send_to_b Link_Two_Way
+
+// Resume all transactions at both ends:
+send_to_a resume all
+send_to_b resume all
+
+verify
+
+/ End of test.
+

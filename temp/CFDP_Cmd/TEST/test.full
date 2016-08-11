@@ -1,0 +1,31 @@
+system date
+system echo CFDP Regression Test, run on `date` > test.progress
+
+! Start two CFDP entities:
+system cfdp_flight < enable_pipes > 23.log &
+system cfdp_ground 1.24 < enable_pipes > 1.24.log &
+
+! Specify which two CFDP node-IDs to use:
+node 23
+node 1.24
+
+!! Run the robustness test:
+send_to_a robust?
+send_to_b robust?
+
+!! Run the operational tests:
+run test.requests
+run test.faults
+run test.ccsds
+run test.cancelling
+run test.stress
+run test.freeze
+
+! Stop the CFDP entities:
+send_to_a exit
+send_to_b exit
+wait 10
+
+system date
+system echo Done. `date` >> test.progress
+! End of 'test.full'

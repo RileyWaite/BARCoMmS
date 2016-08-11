@@ -1,0 +1,21 @@
+Test_cfdp: Version 2.0v 2004_01_05.
+
+> system date
+Thu Jul  7 15:51:31 CDT 2016
+
+> system echo CFDP Regression Test, run on `date` > test.progress
+
+> 
+
+> ! Start two CFDP entities:
+
+> system cfdp_flight < enable_pipes > 23.log &
+
+> system cfdp_ground 1.24 < enable_pipes > 1.24.log &
+
+> 
+
+> ! Specify which two CFDP node-IDs to use:
+
+> node 23
+Opening a file from the node (cfdp_23.out)... 

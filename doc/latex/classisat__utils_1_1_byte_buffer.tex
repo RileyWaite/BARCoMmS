@@ -1,0 +1,217 @@
+\hypertarget{classisat__utils_1_1_byte_buffer}{}\section{isat\+\_\+utils\+:\+:Byte\+Buffer Class Reference}
+\label{classisat__utils_1_1_byte_buffer}\index{isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}}
+
+
+{\ttfamily \#include $<$Byte\+Buffer.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Byte\+Order} \{ {\bfseries Little\+Endian}, 
+{\bfseries Big\+Endian}
+ \}\hypertarget{classisat__utils_1_1_byte_buffer_a23d178f62dad62bad876f2350d3a552d}{}\label{classisat__utils_1_1_byte_buffer_a23d178f62dad62bad876f2350d3a552d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classisat__utils_1_1_byte_buffer_a9f4312493a433a005346b3f777d82c2a}{Byte\+Buffer} (int max\+Size=100)
+\item 
+{\bfseries Byte\+Buffer} (\hyperlink{classisat__utils_1_1_byte_buffer}{Byte\+Buffer} const \&rhs)\hypertarget{classisat__utils_1_1_byte_buffer_aac59d94f64a6e230092bb58a231f17ad}{}\label{classisat__utils_1_1_byte_buffer_aac59d94f64a6e230092bb58a231f17ad}
+
+\item 
+\hyperlink{classisat__utils_1_1_byte_buffer}{Byte\+Buffer} \& {\bfseries operator=} (\hyperlink{classisat__utils_1_1_byte_buffer}{Byte\+Buffer} rhs)\hypertarget{classisat__utils_1_1_byte_buffer_ae9e5d0ce671455c3ea0ef6b1177b6545}{}\label{classisat__utils_1_1_byte_buffer_ae9e5d0ce671455c3ea0ef6b1177b6545}
+
+\item 
+void \hyperlink{classisat__utils_1_1_byte_buffer_aba7629c0a1f32a7c8bc1fb0b7aa25d84}{clear} ()
+\item 
+bool \hyperlink{classisat__utils_1_1_byte_buffer_a713fea8a50894c0de09c5bac0a75d5f6}{seek} (int pos)
+\item 
+int \hyperlink{classisat__utils_1_1_byte_buffer_ac7936db245374ce1a91f50974108bf81}{get\+Position} () const 
+\item 
+int {\bfseries get\+Limit} () const \hypertarget{classisat__utils_1_1_byte_buffer_a916ff3ebb1c1f3b5961ed4518a57778a}{}\label{classisat__utils_1_1_byte_buffer_a916ff3ebb1c1f3b5961ed4518a57778a}
+
+\item 
+int {\bfseries get\+Capacity} () const \hypertarget{classisat__utils_1_1_byte_buffer_ae82ac9a8ea9a9cbad5017dbb9f3264f6}{}\label{classisat__utils_1_1_byte_buffer_ae82ac9a8ea9a9cbad5017dbb9f3264f6}
+
+\item 
+char const $\ast$ \hyperlink{classisat__utils_1_1_byte_buffer_abfd9c2f3bce4061d1e6111d6196bf652}{get\+Bytes} () const 
+\item 
+void {\bfseries set\+Byte\+Order} (Byte\+Order order)\hypertarget{classisat__utils_1_1_byte_buffer_a441e4ae0439dcef442075d9e9e702d5b}{}\label{classisat__utils_1_1_byte_buffer_a441e4ae0439dcef442075d9e9e702d5b}
+
+\item 
+Byte\+Order {\bfseries get\+Byte\+Order} ()\hypertarget{classisat__utils_1_1_byte_buffer_a06221da5fbdcac9152d88cb016e66aa5}{}\label{classisat__utils_1_1_byte_buffer_a06221da5fbdcac9152d88cb016e66aa5}
+
+\item 
+Byte\+Order {\bfseries get\+Native\+Byte\+Order} ()\hypertarget{classisat__utils_1_1_byte_buffer_ab383182e5a092503093a89335abdddb2}{}\label{classisat__utils_1_1_byte_buffer_ab383182e5a092503093a89335abdddb2}
+
+\item 
+bool \hyperlink{classisat__utils_1_1_byte_buffer_a6fff89c596eb04a8d243cdffd1f66251}{zero} (int count)
+\item 
+bool \hyperlink{classisat__utils_1_1_byte_buffer_a5848cebe8b234adb5c7f0af5b681c4b0}{put} (char const $\ast$data, int length)
+\item 
+bool {\bfseries put\+Byte} (unsigned char val)\hypertarget{classisat__utils_1_1_byte_buffer_ae30167db8302a7e5bea6e9136e7f7ea2}{}\label{classisat__utils_1_1_byte_buffer_ae30167db8302a7e5bea6e9136e7f7ea2}
+
+\item 
+bool {\bfseries put\+Boolean} (bool val)\hypertarget{classisat__utils_1_1_byte_buffer_aa29da52c50958b667699aa46a68a5601}{}\label{classisat__utils_1_1_byte_buffer_aa29da52c50958b667699aa46a68a5601}
+
+\item 
+bool {\bfseries put\+Short} (short val)\hypertarget{classisat__utils_1_1_byte_buffer_add15695017738c951656b9b4f9a9030f}{}\label{classisat__utils_1_1_byte_buffer_add15695017738c951656b9b4f9a9030f}
+
+\item 
+bool {\bfseries put\+Int} (int val)\hypertarget{classisat__utils_1_1_byte_buffer_a7cb40c1f7b3de249c0513dfbd9fd14c4}{}\label{classisat__utils_1_1_byte_buffer_a7cb40c1f7b3de249c0513dfbd9fd14c4}
+
+\item 
+bool {\bfseries put\+Float} (float val)\hypertarget{classisat__utils_1_1_byte_buffer_adc2c6670c58549309e7ae6ec84f80ab1}{}\label{classisat__utils_1_1_byte_buffer_adc2c6670c58549309e7ae6ec84f80ab1}
+
+\item 
+bool {\bfseries put\+Double} (double val)\hypertarget{classisat__utils_1_1_byte_buffer_ae6fceb8b47c53a046500966fb42ddac3}{}\label{classisat__utils_1_1_byte_buffer_ae6fceb8b47c53a046500966fb42ddac3}
+
+\item 
+bool {\bfseries put\+Int32} (int32\+\_\+t val)\hypertarget{classisat__utils_1_1_byte_buffer_ab0571342a4da94a0096bbda428f98e91}{}\label{classisat__utils_1_1_byte_buffer_ab0571342a4da94a0096bbda428f98e91}
+
+\item 
+bool {\bfseries put\+Int64} (int64\+\_\+t val)\hypertarget{classisat__utils_1_1_byte_buffer_a17a34eecf26a3cf8357fcf3d168d32df}{}\label{classisat__utils_1_1_byte_buffer_a17a34eecf26a3cf8357fcf3d168d32df}
+
+\item 
+bool {\bfseries put\+Uint32} (uint32\+\_\+t val)\hypertarget{classisat__utils_1_1_byte_buffer_ab4a52f2f98b8d82a0f49dfa2092f66f4}{}\label{classisat__utils_1_1_byte_buffer_ab4a52f2f98b8d82a0f49dfa2092f66f4}
+
+\item 
+bool {\bfseries put\+Uint64} (uint64\+\_\+t val)\hypertarget{classisat__utils_1_1_byte_buffer_a50a7fe8e470bba38c30043c7762c35f2}{}\label{classisat__utils_1_1_byte_buffer_a50a7fe8e470bba38c30043c7762c35f2}
+
+\item 
+bool {\bfseries get\+Byte} (unsigned char \&val)\hypertarget{classisat__utils_1_1_byte_buffer_a9e0713e2d91b9500ab07bc79f6b8dab7}{}\label{classisat__utils_1_1_byte_buffer_a9e0713e2d91b9500ab07bc79f6b8dab7}
+
+\item 
+bool {\bfseries get\+Boolean} (bool \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a920085ab7a5ec2ac058817b0562e61ca}{}\label{classisat__utils_1_1_byte_buffer_a920085ab7a5ec2ac058817b0562e61ca}
+
+\item 
+bool {\bfseries get\+Short} (short \&value)\hypertarget{classisat__utils_1_1_byte_buffer_ab053198353e8472f4abb10cbc89ea1a7}{}\label{classisat__utils_1_1_byte_buffer_ab053198353e8472f4abb10cbc89ea1a7}
+
+\item 
+bool {\bfseries get\+Int} (int \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a05344c817b39e5ffd6061ef034e79782}{}\label{classisat__utils_1_1_byte_buffer_a05344c817b39e5ffd6061ef034e79782}
+
+\item 
+bool {\bfseries get\+Float} (float \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a8d18929321a12811b0adf4dd6a7bde97}{}\label{classisat__utils_1_1_byte_buffer_a8d18929321a12811b0adf4dd6a7bde97}
+
+\item 
+bool {\bfseries get\+Double} (double \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a38b08e1eb87881f0a17e4a839d79a2ba}{}\label{classisat__utils_1_1_byte_buffer_a38b08e1eb87881f0a17e4a839d79a2ba}
+
+\item 
+bool {\bfseries get\+Int32} (int32\+\_\+t \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a4b5f0b6bc42393ce0854afccae1e8ba2}{}\label{classisat__utils_1_1_byte_buffer_a4b5f0b6bc42393ce0854afccae1e8ba2}
+
+\item 
+bool {\bfseries get\+Int64} (int64\+\_\+t \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a8dbe370b9cd2f40486712a918d5974c9}{}\label{classisat__utils_1_1_byte_buffer_a8dbe370b9cd2f40486712a918d5974c9}
+
+\item 
+bool {\bfseries get\+Uint32} (uint32\+\_\+t \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a8505094c9a0ab612c24b9386821630cf}{}\label{classisat__utils_1_1_byte_buffer_a8505094c9a0ab612c24b9386821630cf}
+
+\item 
+bool {\bfseries get\+Uint64} (uint64\+\_\+t \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a80a6474146c84f119c4d25e2de8f69c6}{}\label{classisat__utils_1_1_byte_buffer_a80a6474146c84f119c4d25e2de8f69c6}
+
+\item 
+bool {\bfseries get\+Bits} (int bit\+Offset, int bit\+Width, int \&value)\hypertarget{classisat__utils_1_1_byte_buffer_a1e3ff2ed80f8ab63a9a318b17176014c}{}\label{classisat__utils_1_1_byte_buffer_a1e3ff2ed80f8ab63a9a318b17176014c}
+
+\item 
+bool {\bfseries put\+Bits} (int bit\+Offset, int bit\+Width, int value)\hypertarget{classisat__utils_1_1_byte_buffer_adf5fc993d9f2d0c8f3df067e62197d7d}{}\label{classisat__utils_1_1_byte_buffer_adf5fc993d9f2d0c8f3df067e62197d7d}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries swap\+Instance} (\hyperlink{classisat__utils_1_1_byte_buffer}{Byte\+Buffer} \&rhs)\hypertarget{classisat__utils_1_1_byte_buffer_aca1b50580a58c9aabc912b8eb6543987}{}\label{classisat__utils_1_1_byte_buffer_aca1b50580a58c9aabc912b8eb6543987}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ {\bfseries buffer}\hypertarget{classisat__utils_1_1_byte_buffer_ac5c56d68ba13c03a2440d6ba4738cff3}{}\label{classisat__utils_1_1_byte_buffer_ac5c56d68ba13c03a2440d6ba4738cff3}
+
+\item 
+int {\bfseries max\+Size}\hypertarget{classisat__utils_1_1_byte_buffer_a165cc673c8169eaabd88b0c2ce3df2a3}{}\label{classisat__utils_1_1_byte_buffer_a165cc673c8169eaabd88b0c2ce3df2a3}
+
+\item 
+int {\bfseries pos}\hypertarget{classisat__utils_1_1_byte_buffer_a42ba2c311d4b680899933035a26421ae}{}\label{classisat__utils_1_1_byte_buffer_a42ba2c311d4b680899933035a26421ae}
+
+\item 
+int {\bfseries limit}\hypertarget{classisat__utils_1_1_byte_buffer_a718e92cd1132e3e0562698398bbf016a}{}\label{classisat__utils_1_1_byte_buffer_a718e92cd1132e3e0562698398bbf016a}
+
+\item 
+Byte\+Order {\bfseries byte\+Order}\hypertarget{classisat__utils_1_1_byte_buffer_a66654b19b70e006eb7d64a589bc8a842}{}\label{classisat__utils_1_1_byte_buffer_a66654b19b70e006eb7d64a589bc8a842}
+
+\item 
+Byte\+Order {\bfseries native\+Byte\+Order}\hypertarget{classisat__utils_1_1_byte_buffer_ab8e39542ef1a07385c62ed6cdc58d4a9}{}\label{classisat__utils_1_1_byte_buffer_ab8e39542ef1a07385c62ed6cdc58d4a9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A buffer of bytes with useful get/set methods.
+
+Modelled after Java\textquotesingle{}s class of the same name. This class wraps a buffer of bytes and provides get and set methods for various types commonly found in network packets. The byte order can be switch back and forth, even between gets (some packet formats have both big and little endian byte orders. Annoying.)
+
+The abstraction is a buffer with a maximum size and a current read/write pointer. Reading or writing advances the pointer by the size of whatever was read. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}!Byte\+Buffer@{Byte\+Buffer}}
+\index{Byte\+Buffer@{Byte\+Buffer}!isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}}
+\subsubsection[{\texorpdfstring{Byte\+Buffer(int max\+Size=100)}{ByteBuffer(int maxSize=100)}}]{\setlength{\rightskip}{0pt plus 5cm}isat\+\_\+utils\+::\+Byte\+Buffer\+::\+Byte\+Buffer (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+Size = {\ttfamily 100}}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_byte_buffer_a9f4312493a433a005346b3f777d82c2a}{}\label{classisat__utils_1_1_byte_buffer_a9f4312493a433a005346b3f777d82c2a}
+Create a \hyperlink{classisat__utils_1_1_byte_buffer}{Byte\+Buffer} capable of holding up to maxsize bytes. 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}!clear@{clear}}
+\index{clear@{clear}!isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}}
+\subsubsection[{\texorpdfstring{clear()}{clear()}}]{\setlength{\rightskip}{0pt plus 5cm}void isat\+\_\+utils\+::\+Byte\+Buffer\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_byte_buffer_aba7629c0a1f32a7c8bc1fb0b7aa25d84}{}\label{classisat__utils_1_1_byte_buffer_aba7629c0a1f32a7c8bc1fb0b7aa25d84}
+Clears the buffer by resetting the read/write pointer to zero. identical to seek(0). \index{isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}!get\+Bytes@{get\+Bytes}}
+\index{get\+Bytes@{get\+Bytes}!isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}}
+\subsubsection[{\texorpdfstring{get\+Bytes() const }{getBytes() const }}]{\setlength{\rightskip}{0pt plus 5cm}char const $\ast$ isat\+\_\+utils\+::\+Byte\+Buffer\+::get\+Bytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_byte_buffer_abfd9c2f3bce4061d1e6111d6196bf652}{}\label{classisat__utils_1_1_byte_buffer_abfd9c2f3bce4061d1e6111d6196bf652}
+Return a pointer to the raw bytes in this instance. \index{isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}!get\+Position@{get\+Position}}
+\index{get\+Position@{get\+Position}!isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}}
+\subsubsection[{\texorpdfstring{get\+Position() const }{getPosition() const }}]{\setlength{\rightskip}{0pt plus 5cm}int isat\+\_\+utils\+::\+Byte\+Buffer\+::get\+Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_byte_buffer_ac7936db245374ce1a91f50974108bf81}{}\label{classisat__utils_1_1_byte_buffer_ac7936db245374ce1a91f50974108bf81}
+\begin{DoxyReturn}{Returns}
+The current offset of the read/write pointer. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}!put@{put}}
+\index{put@{put}!isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}}
+\subsubsection[{\texorpdfstring{put(char const $\ast$data, int length)}{put(char const *data, int length)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+Byte\+Buffer\+::put (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{data, }
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_byte_buffer_a5848cebe8b234adb5c7f0af5b681c4b0}{}\label{classisat__utils_1_1_byte_buffer_a5848cebe8b234adb5c7f0af5b681c4b0}
+Write length bytes from data into this instance\textquotesingle{}s buffer. \index{isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}!seek@{seek}}
+\index{seek@{seek}!isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}}
+\subsubsection[{\texorpdfstring{seek(int pos)}{seek(int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+Byte\+Buffer\+::seek (
+\begin{DoxyParamCaption}
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_byte_buffer_a713fea8a50894c0de09c5bac0a75d5f6}{}\label{classisat__utils_1_1_byte_buffer_a713fea8a50894c0de09c5bac0a75d5f6}
+Move the read/write pointer to pos. \index{isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}!zero@{zero}}
+\index{zero@{zero}!isat\+\_\+utils\+::\+Byte\+Buffer@{isat\+\_\+utils\+::\+Byte\+Buffer}}
+\subsubsection[{\texorpdfstring{zero(int count)}{zero(int count)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+Byte\+Buffer\+::zero (
+\begin{DoxyParamCaption}
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_byte_buffer_a6fff89c596eb04a8d243cdffd1f66251}{}\label{classisat__utils_1_1_byte_buffer_a6fff89c596eb04a8d243cdffd1f66251}
+Write count zero bytes into buffer at current location. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Byte\+Buffer.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Byte\+Buffer.\+cpp\end{DoxyCompactItemize}

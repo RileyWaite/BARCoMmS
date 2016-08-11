@@ -1,0 +1,56 @@
+\hypertarget{classisat__utils_1_1_event_manager}{}\section{isat\+\_\+utils\+:\+:Event\+Manager Class Reference}
+\label{classisat__utils_1_1_event_manager}\index{isat\+\_\+utils\+::\+Event\+Manager@{isat\+\_\+utils\+::\+Event\+Manager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classisat__utils_1_1_event_manager_a8ae01f4eeb365b1ead6e81d38ae78195}{log\+Event} (\hyperlink{classisat__utils_1_1_event}{Event} event)
+\item 
+bool \hyperlink{classisat__utils_1_1_event_manager_ab95b464d5fdde2902c144c0445fbda75}{has\+Events} () const 
+\item 
+bool \hyperlink{classisat__utils_1_1_event_manager_acfb496b37edf922713c7a372dfacd80e}{get\+Event} (\hyperlink{classisat__utils_1_1_event}{Event} \&event)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classisat__utils_1_1_event_manager}{Event\+Manager} \& {\bfseries get\+Instance} ()\hypertarget{classisat__utils_1_1_event_manager_ab4cb6141ba60fb9fb4fbdfdb083c4a1b}{}\label{classisat__utils_1_1_event_manager_ab4cb6141ba60fb9fb4fbdfdb083c4a1b}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::deque$<$ \hyperlink{classisat__utils_1_1_event}{Event} $>$ {\bfseries event\+Queue}\hypertarget{classisat__utils_1_1_event_manager_ab32d83c25318106a3dd2c2e4488f1789}{}\label{classisat__utils_1_1_event_manager_ab32d83c25318106a3dd2c2e4488f1789}
+
+\item 
+boost\+::mutex {\bfseries queue\+Mutex}\hypertarget{classisat__utils_1_1_event_manager_a36a612e1e1af43922b18d9efacad5853}{}\label{classisat__utils_1_1_event_manager_a36a612e1e1af43922b18d9efacad5853}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+Event\+Manager@{isat\+\_\+utils\+::\+Event\+Manager}!get\+Event@{get\+Event}}
+\index{get\+Event@{get\+Event}!isat\+\_\+utils\+::\+Event\+Manager@{isat\+\_\+utils\+::\+Event\+Manager}}
+\subsubsection[{\texorpdfstring{get\+Event(\+Event \&event)}{getEvent(Event &event)}}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+Event\+Manager\+::get\+Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event} \&}]{event}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_event_manager_acfb496b37edf922713c7a372dfacd80e}{}\label{classisat__utils_1_1_event_manager_acfb496b37edf922713c7a372dfacd80e}
+Gets the next event in the queue, returns true. Returns false if there are no events. \index{isat\+\_\+utils\+::\+Event\+Manager@{isat\+\_\+utils\+::\+Event\+Manager}!has\+Events@{has\+Events}}
+\index{has\+Events@{has\+Events}!isat\+\_\+utils\+::\+Event\+Manager@{isat\+\_\+utils\+::\+Event\+Manager}}
+\subsubsection[{\texorpdfstring{has\+Events() const }{hasEvents() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+Event\+Manager\+::has\+Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_event_manager_ab95b464d5fdde2902c144c0445fbda75}{}\label{classisat__utils_1_1_event_manager_ab95b464d5fdde2902c144c0445fbda75}
+Returns true if there are events in the event queue. \index{isat\+\_\+utils\+::\+Event\+Manager@{isat\+\_\+utils\+::\+Event\+Manager}!log\+Event@{log\+Event}}
+\index{log\+Event@{log\+Event}!isat\+\_\+utils\+::\+Event\+Manager@{isat\+\_\+utils\+::\+Event\+Manager}}
+\subsubsection[{\texorpdfstring{log\+Event(\+Event event)}{logEvent(Event event)}}]{\setlength{\rightskip}{0pt plus 5cm}void isat\+\_\+utils\+::\+Event\+Manager\+::log\+Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event}}]{event}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_event_manager_a8ae01f4eeb365b1ead6e81d38ae78195}{}\label{classisat__utils_1_1_event_manager_a8ae01f4eeb365b1ead6e81d38ae78195}
+Issue a point event (single instant in time). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Event\+Manager.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Event\+Manager.\+cpp\end{DoxyCompactItemize}

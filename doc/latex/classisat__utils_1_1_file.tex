@@ -1,0 +1,167 @@
+\hypertarget{classisat__utils_1_1_file}{}\section{isat\+\_\+utils\+:\+:File Class Reference}
+\label{classisat__utils_1_1_file}\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+
+
+{\ttfamily \#include $<$File.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classisat__utils_1_1_file_ab5c27e041ed561bc2f4df177729e3a16}{File} (\hyperlink{classisat__utils_1_1_string}{String} name)
+\item 
+{\bfseries File} (\hyperlink{classisat__utils_1_1_file}{File} const \&rhs)\hypertarget{classisat__utils_1_1_file_af7d0caa9d270dec2ba47b7480f830f6a}{}\label{classisat__utils_1_1_file_af7d0caa9d270dec2ba47b7480f830f6a}
+
+\item 
+\hyperlink{classisat__utils_1_1_file}{File} \& {\bfseries operator=} (\hyperlink{classisat__utils_1_1_file}{File} rhs)\hypertarget{classisat__utils_1_1_file_a0707325fdb0f0d7e30b4dded4ca12968}{}\label{classisat__utils_1_1_file_a0707325fdb0f0d7e30b4dded4ca12968}
+
+\item 
+\hyperlink{classisat__utils_1_1_string}{String} \hyperlink{classisat__utils_1_1_file_a622367fe6c4acc18c1bc17d4622828da}{get\+Name} () const 
+\item 
+bool \hyperlink{classisat__utils_1_1_file_a4aac599cc77dd555da5139af109a0a8c}{exists} () const 
+\item 
+bool \hyperlink{classisat__utils_1_1_file_a4094a6e3a043afb50aa01244788c2d3e}{is\+File} () const 
+\item 
+bool \hyperlink{classisat__utils_1_1_file_ab701f989381170817b3d6d5f1538aa04}{is\+Directory} () const 
+\item 
+long \hyperlink{classisat__utils_1_1_file_a0a727f4f870d89361fbe5de225669edc}{length} () const 
+\item 
+long \hyperlink{classisat__utils_1_1_file_a4fb268c3238647d98fc09055341d3350}{last\+Access\+Time} () const 
+\item 
+long \hyperlink{classisat__utils_1_1_file_a70413578e0552a9d6b68f11c76a257f4}{last\+Data\+Modification\+Time} () const 
+\item 
+long \hyperlink{classisat__utils_1_1_file_ab6161b7629ab9316452e0a6c012fe5ed}{last\+Status\+Change\+Time} () const 
+\item 
+\hyperlink{classisat__utils_1_1_array_list}{Array\+List}$<$ \hyperlink{classisat__utils_1_1_string}{String} $>$ \hyperlink{classisat__utils_1_1_file_afa2650abc47107da9d3ec39d74c50043}{list} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Operations on a file or directory.
+
+Inspired by Java\textquotesingle{}s \hyperlink{classisat__utils_1_1_file}{File} class, this class provides common operations on files and directories. Any additional operations added should be named the same (and as much as possible, act the same) as the Java \hyperlink{classisat__utils_1_1_file}{File} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!File@{File}}
+\index{File@{File}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{File(\+String name)}{File(String name)}}]{\setlength{\rightskip}{0pt plus 5cm}isat\+\_\+utils\+::\+File\+::\+File (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_file_ab5c27e041ed561bc2f4df177729e3a16}{}\label{classisat__utils_1_1_file_ab5c27e041ed561bc2f4df177729e3a16}
+Creates a \hyperlink{classisat__utils_1_1_file}{File} instance from the given path name. 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!exists@{exists}}
+\index{exists@{exists}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{exists() const }{exists() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+File\+::exists (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_a4aac599cc77dd555da5139af109a0a8c}{}\label{classisat__utils_1_1_file_a4aac599cc77dd555da5139af109a0a8c}
+Determine if the file or directory represented by path name exists.
+
+\begin{DoxyReturn}{Returns}
+true if the pathname exists. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{get\+Name() const }{getName() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} isat\+\_\+utils\+::\+File\+::get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_a622367fe6c4acc18c1bc17d4622828da}{}\label{classisat__utils_1_1_file_a622367fe6c4acc18c1bc17d4622828da}
+Returns the path name represented by this instance.
+
+\begin{DoxyReturn}{Returns}
+the path name of the instance. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!is\+Directory@{is\+Directory}}
+\index{is\+Directory@{is\+Directory}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{is\+Directory() const }{isDirectory() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+File\+::is\+Directory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_ab701f989381170817b3d6d5f1538aa04}{}\label{classisat__utils_1_1_file_ab701f989381170817b3d6d5f1538aa04}
+Determine if the path name in this instance is a directory.
+
+\begin{DoxyReturn}{Returns}
+true if the path name is a directory. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!is\+File@{is\+File}}
+\index{is\+File@{is\+File}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{is\+File() const }{isFile() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool isat\+\_\+utils\+::\+File\+::is\+File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_a4094a6e3a043afb50aa01244788c2d3e}{}\label{classisat__utils_1_1_file_a4094a6e3a043afb50aa01244788c2d3e}
+Determine if the path name in this instance is a file.
+
+\begin{DoxyReturn}{Returns}
+true if the path name is a file. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!last\+Access\+Time@{last\+Access\+Time}}
+\index{last\+Access\+Time@{last\+Access\+Time}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{last\+Access\+Time() const }{lastAccessTime() const }}]{\setlength{\rightskip}{0pt plus 5cm}long isat\+\_\+utils\+::\+File\+::last\+Access\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_a4fb268c3238647d98fc09055341d3350}{}\label{classisat__utils_1_1_file_a4fb268c3238647d98fc09055341d3350}
+Get the atime for this instance.
+
+\begin{DoxyReturn}{Returns}
+The last access time in seconds from the unix epoch. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!last\+Data\+Modification\+Time@{last\+Data\+Modification\+Time}}
+\index{last\+Data\+Modification\+Time@{last\+Data\+Modification\+Time}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{last\+Data\+Modification\+Time() const }{lastDataModificationTime() const }}]{\setlength{\rightskip}{0pt plus 5cm}long isat\+\_\+utils\+::\+File\+::last\+Data\+Modification\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_a70413578e0552a9d6b68f11c76a257f4}{}\label{classisat__utils_1_1_file_a70413578e0552a9d6b68f11c76a257f4}
+Get the mtime for this instance.
+
+\begin{DoxyReturn}{Returns}
+The last data modification time in seconds from the unix epoch. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!last\+Status\+Change\+Time@{last\+Status\+Change\+Time}}
+\index{last\+Status\+Change\+Time@{last\+Status\+Change\+Time}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{last\+Status\+Change\+Time() const }{lastStatusChangeTime() const }}]{\setlength{\rightskip}{0pt plus 5cm}long isat\+\_\+utils\+::\+File\+::last\+Status\+Change\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_ab6161b7629ab9316452e0a6c012fe5ed}{}\label{classisat__utils_1_1_file_ab6161b7629ab9316452e0a6c012fe5ed}
+Get the ctime for this instance.
+
+\begin{DoxyReturn}{Returns}
+The last status change time in seconds from the unix epoch. 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!length@{length}}
+\index{length@{length}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{length() const }{length() const }}]{\setlength{\rightskip}{0pt plus 5cm}long isat\+\_\+utils\+::\+File\+::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_a0a727f4f870d89361fbe5de225669edc}{}\label{classisat__utils_1_1_file_a0a727f4f870d89361fbe5de225669edc}
+Determine the length of the file specified by this instance\textquotesingle{}s path name.
+
+\begin{DoxyReturn}{Returns}
+The length of the file in bytes. Returns 0 if the file is unreadable or if it\textquotesingle{}s not a file. This is not what you\textquotesingle{}d want, but we can\textquotesingle{}t throw an exception for an error, so make sure the file exists and is a file before you ask for the length. \+:) 
+\end{DoxyReturn}
+\index{isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}!list@{list}}
+\index{list@{list}!isat\+\_\+utils\+::\+File@{isat\+\_\+utils\+::\+File}}
+\subsubsection[{\texorpdfstring{list() const }{list() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Array\+List}$<$ {\bf String} $>$ isat\+\_\+utils\+::\+File\+::list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classisat__utils_1_1_file_afa2650abc47107da9d3ec39d74c50043}{}\label{classisat__utils_1_1_file_afa2650abc47107da9d3ec39d74c50043}
+If this instance is a directory, return a list of files and directories contained within it.
+
+\begin{DoxyReturn}{Returns}
+a list of files and directories, or a zero length list if this instance is not a directory. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/File.\+h\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/File.\+cpp\end{DoxyCompactItemize}

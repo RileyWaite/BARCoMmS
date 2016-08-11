@@ -1,0 +1,82 @@
+\hypertarget{classisat__utils_1_1_array_list}{}\section{isat\+\_\+utils\+:\+:Array\+List$<$ T $>$ Class Template Reference}
+\label{classisat__utils_1_1_array_list}\index{isat\+\_\+utils\+::\+Array\+List$<$ T $>$@{isat\+\_\+utils\+::\+Array\+List$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Array\+List.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Array\+List} (int max\+Size=100)\hypertarget{classisat__utils_1_1_array_list_a047dfeb4558a3c00f4a7869e483e5560}{}\label{classisat__utils_1_1_array_list_a047dfeb4558a3c00f4a7869e483e5560}
+
+\item 
+{\bfseries Array\+List} (\hyperlink{classisat__utils_1_1_array_list}{Array\+List}$<$ T $>$ const \&rhs)\hypertarget{classisat__utils_1_1_array_list_aadad63e6e7467804583692241e48e7f3}{}\label{classisat__utils_1_1_array_list_aadad63e6e7467804583692241e48e7f3}
+
+\item 
+\hyperlink{classisat__utils_1_1_array_list}{Array\+List}$<$ T $>$ \& {\bfseries operator=} (\hyperlink{classisat__utils_1_1_array_list}{Array\+List}$<$ T $>$ \&rhs)\hypertarget{classisat__utils_1_1_array_list_a181b240f65d9070a2481899aaced9041}{}\label{classisat__utils_1_1_array_list_a181b240f65d9070a2481899aaced9041}
+
+\item 
+bool {\bfseries error} ()\hypertarget{classisat__utils_1_1_array_list_a4030036863ef8b6b91b5081aa55dbddd}{}\label{classisat__utils_1_1_array_list_a4030036863ef8b6b91b5081aa55dbddd}
+
+\item 
+void {\bfseries clear} ()\hypertarget{classisat__utils_1_1_array_list_a94ef082dc86abf943a4f4d37ad7df655}{}\label{classisat__utils_1_1_array_list_a94ef082dc86abf943a4f4d37ad7df655}
+
+\item 
+bool {\bfseries add} (T element)\hypertarget{classisat__utils_1_1_array_list_aa8bc6b5d62c88f7d578e8ffd2cd203d6}{}\label{classisat__utils_1_1_array_list_aa8bc6b5d62c88f7d578e8ffd2cd203d6}
+
+\item 
+bool \hyperlink{classisat__utils_1_1_array_list_abfaa096b1e41b8463f7e034c8ba40ae2}{put} (int index, T element)
+\item 
+bool {\bfseries contains} (T element)\hypertarget{classisat__utils_1_1_array_list_a93c3ba50cd56aef241f149a3ee74b95b}{}\label{classisat__utils_1_1_array_list_a93c3ba50cd56aef241f149a3ee74b95b}
+
+\item 
+bool {\bfseries get} (int index, T \&element) const \hypertarget{classisat__utils_1_1_array_list_a81fe1bd3a585fde32eafd67d5f113787}{}\label{classisat__utils_1_1_array_list_a81fe1bd3a585fde32eafd67d5f113787}
+
+\item 
+bool {\bfseries index\+Of} (T element, int \&index) const \hypertarget{classisat__utils_1_1_array_list_a06dd0e867e93b0be5c28038d15a76545}{}\label{classisat__utils_1_1_array_list_a06dd0e867e93b0be5c28038d15a76545}
+
+\item 
+bool {\bfseries is\+Empty} ()\hypertarget{classisat__utils_1_1_array_list_adbaef89ffb6e2659040aab3933284cea}{}\label{classisat__utils_1_1_array_list_adbaef89ffb6e2659040aab3933284cea}
+
+\item 
+bool {\bfseries remove} (int index)\hypertarget{classisat__utils_1_1_array_list_ab6e75564e4912810d54d20f9c6e6827c}{}\label{classisat__utils_1_1_array_list_ab6e75564e4912810d54d20f9c6e6827c}
+
+\item 
+bool {\bfseries remove\+Element} (T element)\hypertarget{classisat__utils_1_1_array_list_a197be365458a7812aaa0a69f09d13c1b}{}\label{classisat__utils_1_1_array_list_a197be365458a7812aaa0a69f09d13c1b}
+
+\item 
+bool {\bfseries set} (int index, T element)\hypertarget{classisat__utils_1_1_array_list_a5007800ae33650919dd11f4a23296178}{}\label{classisat__utils_1_1_array_list_a5007800ae33650919dd11f4a23296178}
+
+\item 
+int {\bfseries size} () const \hypertarget{classisat__utils_1_1_array_list_a5edf6973d1b2d71267a2fb8097879862}{}\label{classisat__utils_1_1_array_list_a5edf6973d1b2d71267a2fb8097879862}
+
+\item 
+int {\bfseries capacity} () const \hypertarget{classisat__utils_1_1_array_list_acf7ae0900bdba81e539c37c990ff5714}{}\label{classisat__utils_1_1_array_list_acf7ae0900bdba81e539c37c990ff5714}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\\*
+class isat\+\_\+utils\+::\+Array\+List$<$ T $>$}
+
+Exception safe version of a simple list container. Modeled after java\textquotesingle{}s \hyperlink{classisat__utils_1_1_array_list}{Array\+List}.
+
+Unlike std\+::vector, An \hyperlink{classisat__utils_1_1_array_list}{Array\+List} instance\textquotesingle{}s size is fixed when created. The number of elements in the list may change (the \textquotesingle{}size\textquotesingle{}) but the capacity never changes.
+
+Note that because it\textquotesingle{}s \char`\"{}exception safe\char`\"{} (throws no exceptions), certain compromises in ease of use had to be made. Often, the natural way to do a particular thing (return a value) leaves no room for an error code (other than an exception). If the interface seems awkward in places, this is why. 
+
+\subsection{Member Function Documentation}
+\index{isat\+\_\+utils\+::\+Array\+List@{isat\+\_\+utils\+::\+Array\+List}!put@{put}}
+\index{put@{put}!isat\+\_\+utils\+::\+Array\+List@{isat\+\_\+utils\+::\+Array\+List}}
+\subsubsection[{\texorpdfstring{put(int index, T element)}{put(int index, T element)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf isat\+\_\+utils\+::\+Array\+List}$<$ T $>$\+::put (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{T}]{element}
+\end{DoxyParamCaption}
+)}\hypertarget{classisat__utils_1_1_array_list_abfaa096b1e41b8463f7e034c8ba40ae2}{}\label{classisat__utils_1_1_array_list_abfaa096b1e41b8463f7e034c8ba40ae2}
+Insert element in 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/riley/work/fsw/src/isatgs/\+B\+A\+R\+Co\+Mm\+S/src/dependencies/utils/Array\+List.\+h\end{DoxyCompactItemize}

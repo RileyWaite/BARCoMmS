@@ -1,0 +1,83 @@
+! FILE:  test.freeze  -- this script tests CFDP Freezing and Thawing
+
+! Specify which two CFDP nodes to use:
+node 23
+node 1.24
+
+send_to_a print test_freeze_begin
+send_to_b print test_freeze_begin
+
+send_to_a print test_freeze-1
+send_to_b print test_freeze-1
+
+! Configure CFDP to fail quickly if there is no link: 
+mib ack_timeout 10
+mib ack_limit 10
+mib nak_timeout 10
+mib nak_limit 10
+mib inactivity_timeout 3600
+
+! Configure the Link Simulator to simply deliver a specified percentage
+! of traffic (that percentage will be specifed within each test; this
+! statement chooses the appropriate Link Simulator 'mode'):
+link_sim normal
+link_sim success_rate=90
+
+
+source_file_size 100000
+system date
+get_and_put*10
+system date
+send_to_a summary
+send_to_b summary
+
+!! Give the transactions some time to "get under way":
+wait 15   
+send_to_a summary
+send_to_b summary
+send_to_a v
+send_to_b v
+
+!! Simulate the end of this pass:
+send_to_a freeze
+send_to_b freeze
+send_to_a summary
+send_to_b summary
+send_to_a v
+send_to_b v
+
+!! Wait a while (between passes):
+system date
+verify_transactions_exist
+wait 150
+verify_transactions_exist
+wait 150
+verify_transactions_exist
+system date
+send_to_a summary
+send_to_b summary
+send_to_a v
+send_to_b v
+
+!! Simulate the beginning of the next pass:
+send_to_a thaw
+send_to_b thaw
+send_to_a summary
+send_to_b summary
+send_to_a v
+send_to_b v
+
+!! See if all the transactions complete:
+wait_for_transaction_completion
+verify_file_transfers     ! Freeze and Thaw
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+system date
+
+
+send_to_a print test_freeze_end
+send_to_b print test_freeze_end
+
+! End of 'test.freeze'.

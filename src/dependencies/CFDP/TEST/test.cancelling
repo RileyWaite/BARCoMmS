@@ -1,0 +1,187 @@
+! FILE: test.cancelling
+! WHAT?  This script tests many of the CFDP message combinations that are
+!   possible when a transaction is cancelled - including scenarios in which
+!   both sides initiate a cancel at about the same time.
+
+! Specify which two CFDP nodes to use:
+node 23
+node 1.24
+
+send_to_a print test_cancelling_begin
+send_to_b print test_cancelling_begin
+
+! Configure CFDP 
+mib ack_timeout 5
+mib ack_limit 5
+mib nak_timeout 5
+mib nak_limit 5
+mib inactivity_timeout 60
+
+! Configure the Link Simulator
+link_sim normal
+link_sim success_rate=100
+
+system date
+send_to_a print test.cancelling...
+send_to_a date
+send_to_b print test.cancelling...
+send_to_b date
+
+
+
+!
+! 1) Sender cancels, no pdus dropped.
+!
+
+! We start a Class 2 transaction, and then issue a Cancel Request to
+! the Sender.
+send_to_a print Cancel-1
+send_to_b print Cancel-1
+link_sim normal
+link_sim success_rate=100
+source_file_size 1000000
+put
+send_to_a cancel all             ! Ask the Sender to cancel.
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+!
+! 2) Sender cancels, first Ack-EOF-Cancel dropped.
+!    Receiver shuts down its state machine after sending the first 
+!    Ack-EOF-Cancel, then has to start a new state machine when an 
+!    "unsolicited" EOF-Cancel arrives.
+!    Note:  The large file-size ensures that the 'cancel' will be 
+!    initiated before an EOF-no-error is sent (therefore, the one Ack-EOF
+!    that is dropped will be an Ack-EOF-Cancel and not an Ack-EOF-no-error).
+!
+
+send_to_a print Cancel-2
+send_to_b print Cancel-2
+system date
+link_sim normal
+link_sim success_rate=100
+link_sim drop_one_ack_eof
+source_file_size 1000000      
+put
+send_to_a cancel all
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+
+!
+! 3) Receiver cancels, no pdus dropped.
+!
+
+! We start a Class 2 transaction, then issue a Cancel Request to the Receiver
+send_to_a print Cancel-3
+send_to_b print Cancel-3
+link_sim normal
+link_sim success_rate=100
+source_file_size 1000000
+put
+send_to_b cancel all              ! ask Receiver to cancel
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+!
+! 4) Receiver cancels, first Ack-Finished-Cancel dropped.
+!    Sender shuts down its state machine after sending the first 
+!    Ack-Finished-Cancel, then has to start a new state machine when an 
+!    "unsolicited" Finished-Cancel arrives.
+!    Note:  The large file-size ensures that the 'cancel' will be 
+!    initiated before an EOF-no-error is sent (therefore, the one Ack-Finished
+!    that is dropped will be an Ack-Finished-Cancel and not an 
+!    Ack-Finished-no-error).
+!
+
+send_to_a print Cancel-4
+send_to_b print Cancel-4
+link_sim normal
+link_sim success_rate=100
+link_sim drop_one_ack_fin
+source_file_size 1000000
+put
+send_to_b cancel all
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+
+!
+! 5) Both Sender and Receiver cancel.  
+!    Sender cancels first.
+!    Sender receives Finished-Cancel before Ack-EOF-Cancel
+!    Sender sends Ack-Finished-Cancel, but still requires Ack-EOF-Cancel
+!    Receiver shuts down the transaction once, then has to resurrect it.
+!
+
+send_to_a print Cancel-5
+send_to_b print Cancel-5
+link_sim normal
+link_sim success_rate=100
+link_sim drop_one_eof
+source_file_size 1000000
+put
+send_to_a cancel all               ! ask Sender to cancel
+send_to_b cancel all               ! ask Receiver to cancel
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+
+!
+! 6) Both Sender and Receiver cancel.  
+!    Receiver cancels first.
+!    Receiver receives EOF-Cancel before Ack-Finished-Cancel
+!    Receiver sends Ack-EOF-Cancel, but still requires Ack-Finished-Cancel
+!    Sender shuts down the transaction once, then has to resurrect it.
+!
+
+send_to_a print Cancel-6
+send_to_b print Cancel-6
+link_sim normal
+link_sim success_rate=100
+link_sim drop_one_fin             ! ensures trans doesn't finish too fast
+source_file_size 1000000
+put
+send_to_b cancel all              ! ask Receiver to cancel
+send_to_a cancel all              ! ask Sender to cancel
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+
+!
+! 7) Both Sender and Receiver abandon.
+!    Sender abandons first, then Receiver.
+!
+
+send_to_a print Cancel-7
+send_to_b print Cancel-7
+link_sim normal
+link_sim success_rate=50
+source_file_size 1000000
+put*3
+send_to_a abandon all             ! ask Sender to abandon
+wait 1                            ! so any buffered PDUs are delivered
+send_to_b abandon all             ! ask Receiver to abandon
+wait 5
+wait_for_transaction_completion
+verify_abandoned Yes
+clear_between_tests
+
+
+
+send_to_a print test_cancelling_end
+send_to_b print test_cancelling_end
+
+! End of test.

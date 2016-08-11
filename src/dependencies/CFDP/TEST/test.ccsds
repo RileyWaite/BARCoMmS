@@ -1,0 +1,434 @@
+!! FILE: test.ccsds -- contains tests from the "CFDP Notebook of 
+!!   Common Inter-Agency Tests" (September 2001).  For my CFDP implementation,
+!!   only Sections F1 and F2 apply.  
+
+! Specify which two CFDP nodes will be used:
+node 23
+node 1.24
+
+send_to_a print test_ccsds_begin
+send_to_b print test_ccsds_begin
+
+
+
+
+!!
+!! Test-Series F1
+!!
+
+send_to_a print F1
+send_to_b print F1
+
+! Initialize CFDP configuration:
+mib ack_limit 20
+mib ack_timeout 2
+mib nak_limit 20
+mib nak_timeout 2
+mib inactivity_timeout 60
+
+! Initialize the Link Simulator to be "perfect" (no data droppage):
+link_sim normal
+link_sim success_rate=100
+
+
+
+! F1.1 -- Unack mode; perfect link (tiny file):
+send_to_a print F1.1
+send_to_b print F1.1
+source_file_size 123
+put_1
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F1.2 -- Unack mode; perfect link (medium-sized file):
+send_to_a print F1.2
+send_to_b print F1.2
+source_file_size 64000
+get_1
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F1.3 -- Ack mode; perfect link:
+send_to_a print F1.3
+send_to_b print F1.3
+source_file_size 387
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+!
+! Once again, with a bigger file
+source_file_size 500000
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F1.4 -- Ack mode; some data droppage:
+send_to_a print F1.4
+send_to_b print F1.4
+link_sim success_rate=95
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F1.5 -- Ack mode; some duplicate data:
+send_to_a print F1.5
+send_to_b print F1.5
+link_sim duplicate
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F1.6 -- Ack mode; some reordering of data:
+send_to_a print F1.6
+send_to_b print F1.6
+link_sim reorder
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+link_sim normal               !! bug-fix on 2007_07_05
+link_sim success_rate=100
+clear_between_tests
+
+
+
+! F1.7 -- User Message in Metadata:
+! (not supported)
+
+
+
+! Use a large file for the next 3 tests
+! (to ensure that transfers do not complete before a 'cancel' is received):
+source_file_size 2000000
+
+
+
+! F1.8 -- Sender cancels in-progress transaction:  
+send_to_a print F1.8
+send_to_b print F1.8
+put 
+wait 1
+send_to_a cancel all
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+ 
+
+
+! F1.9 -- Receiver cancels in-progress transaction:
+send_to_a print F1.9
+send_to_b print F1.9
+put 
+wait 1
+send_to_b cancel all
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+
+! F1.10 -- Cancel in unacked mode:
+send_to_a print F1.10
+send_to_b print F1.10
+put_1
+wait 1
+send_to_a cancel all
+wait_for_transaction_completion
+verify_condition_code Cancel_request_received
+clear_between_tests
+
+
+
+
+!!
+!! Test-Series F2
+!!
+
+send_to_a print F2
+send_to_b print F2
+
+
+
+! F2.1 -- First MD pdu dropped:
+send_to_a print F2.1
+send_to_b print F2.1
+link_sim success_rate=100
+link_sim drop_one_md
+source_file_size 10000
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_19:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F2.2 -- First EOF pdu dropped:
+send_to_a print F2.2
+send_to_b print F2.2
+link_sim success_rate=100
+link_sim drop_one_eof
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_19:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F2.3 -- First 'Finished' pdu dropped:
+send_to_a print F2.3
+send_to_b print F2.3
+link_sim success_rate=100
+link_sim drop_one_fin
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_19:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F2.4 -- First 'Ack-EOF' pdu dropped:
+send_to_a print F2.4
+send_to_b print F2.4
+link_sim success_rate=100
+link_sim drop_one_ack_eof
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_19:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F2.5 -- First 'Ack-Finished' pdu dropped:
+send_to_a print F2.5
+send_to_b print F2.5
+link_sim success_rate=100
+link_sim drop_one_ack_fin
+put
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_19:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F2.6 -- Drop every pdu except 'EOF' once (in both directions):
+send_to_a print F2.6
+send_to_b print F2.6
+link_sim success_rate=100
+link_sim drop_all_but_eof
+put
+wait 5
+link_sim normal
+link_sim success_rate=100
+wait_for_transaction_completion
+verify_file_transfers
+!! This next line was added on 2007_06_21:
+verify_condition_code No_error
+clear_between_tests
+
+
+
+! F2.7a -- Cause 'Ack Limit Reached' at Sender:
+!   In stage 1, we cause an 'ack-limit' fault at the Sender.  For this stage,
+! we have the link-simulator drop all Ack PDUs (since it doesn't have a 
+! 'drop_all_ack' option, we use the 'drop_all_ack_and_fin' option).
+!   This ensures that the Sender's ack-timer expires repeatedly when its
+! outgoing EOF PDU is not ack'd.  Eventually, the 'ack-limit' is reached.
+! The Receiver will also have its ack-timer expire repeatedly due to its
+! outgoing Finished PDUs not being ack'd.
+!  To ensure that the Sender gets an Ack-limit fault before the Receiver does,
+! set the Receiver's ack-limit higher.
+!  Stage 2 begins when the Sender initiates a cancel.  In stage 2, we reset
+!  the link-sim so that the transaction can complete normally (i.e. so that
+! the Sender's EOF-Cancel *does* get ack'd by the  Receiver).
+!
+send_to_a print F2.7a
+send_to_b print F2.7a
+send_to_a set ack_limit 2
+send_to_b set ack_limit 50
+mib ack_timeout 2
+mib nak_limit 100
+mib nak_timeout 5
+mib inactivity_timeout 300
+link_sim success_rate=100
+link_sim drop_all_ack_and_fin
+source_file_size 123
+put                                   ! stage-1 begins
+wait_for_transaction_cancellation     ! transition from stage-1 to stage-2
+link_sim normal
+wait_for_transaction_completion
+verify_condition_code Positive_ack_limit_reached
+clear_between_tests
+
+
+
+! F2.7b -- Cause 'Ack Limit Reached' at Receiver:
+! Note: This test is not part of the CCSDS Inter-agency Test Plan;
+! it was added to this test script for completeness.
+!   In stage 1, we cause an 'ack-limit' fault at the Receiver.  For this
+! stage, we have the link-sim pass all PDUs through except Finished PDUs.
+!   This ensures that all data is delivered, and that the Sender see an
+! Ack-EOF.
+!   It also ensures that the Receiver will get an 'ack-limit' fault 
+! (because it never gets an 'ack' of the dropped 'Finished' PDUs).
+!   Stage 2 begins when the Receiver initiates a cancel.  In stage 2,
+! we reset the link-sim so that the transaction can complete normally (i.e.
+! the Receiver's Finished-Cancel PDU gets through and is ack'd by the Sender).
+!
+send_to_a print F2.7b
+send_to_b print F2.7b
+mib ack_limit 2
+mib ack_timeout 10
+mib nak_limit 100
+mib nak_timeout 5
+mib inactivity_timeout 300
+link_sim success_rate=100
+link_sim drop_all_fin
+source_file_size 123
+put                                    ! stage-1 begins
+wait_for_transaction_cancellation      ! transition from stage-1 to stage-2
+link_sim normal
+wait_for_transaction_completion
+verify_condition_code Positive_ack_limit_reached
+clear_between_tests
+
+
+
+! F2.8 -- Cause 'Nak Limit Reached' at Receiver:
+!   For this test, the Sender and Receiver link-simulators are configured
+! independently.  
+!   The Sender's link-sim is set up to drop a fair percentage of outgoing
+! PDUs.  This, along with the large file-size, ensures that the Receiver
+! will miss some data and have to send a Nak.
+!   The Receiver's link-sim is set up to drop all Nak PDUs.  This ensures
+! that the nak-limit will eventually be reached (the gaps will never be
+! filled in because the Sender never receives the Nak PDU).
+!   Once the nak-limit fault occurs, the Receiver will send a Finished-Cancel
+! (it always gets through) and the Sender will respond with an Ack-Finished
+! (80% chance each time; up to 'ack-limit' attempts allowed).
+!
+send_to_a print F2.8
+send_to_b print F2.8
+source_file_size 1000000
+mib ack_limit 100
+mib ack_timeout 30
+mib nak_limit 2
+mib nak_timeout 2
+mib inactivity_timeout 300
+send_to_a sim success_rate=80     ! Sender drops some outgoing File-data
+send_to_a sim normal
+send_to_b sim drop_all_nak        ! Receiver drops all outgoing Naks
+put
+wait_for_transaction_completion
+verify_condition_code Nak_limit_reached
+clear_between_tests
+
+
+
+! F2.9 -- Cause 'Inactivity Timeout' at Sender:
+!   For this test, the Link-Simulator is set to drop all Finished PDUs, but
+! let all other PDUs through.
+!   This ensures that the Sender's inactivity-timer will be started (after
+! it receives an Ack-EOF).
+!   This also ensures that the Sender's inactivity-timer will expire
+! (at some point, it won't see any more incoming PDUs because all of the
+! Reciever's outgoing Finished PDUs are dropped).
+!   After the fault occurs, the transaction will complete normally because
+! the Link-Simulator will let both the EOF-Cancel and Ack-EOF-Cancel through.
+!   Note: set the inactivity-timeout low and the ack-limit high.  This 
+! ensures that the Receiver does not get an 'ack-limit-reached' fault before
+! the Sender's inactivity-timeout occurs.
+!
+send_to_a print F2.9
+send_to_b print F2.9
+source_file_size 10000
+mib ack_limit 100
+mib ack_timeout 5
+mib nak_limit 100
+mib nak_timeout 5
+mib inactivity_timeout 5
+link_sim success_rate=100
+link_sim drop_all_fin
+put
+wait_for_transaction_completion
+verify_condition_code Inactivity_detected
+clear_between_tests
+
+
+
+! F2.10 -- Cause 'Inactivity Timeout' at Receiver:
+!   In stage 1, the link-simulator is set to let most (but not all) PDUs
+! through.  This, along with the large file-size and short duration of
+! stage 1, ensures that a Receiver state machine will start but not finish.
+!   In stage 2, the link-simulator drops all PDUs.  This forces an
+! 'inactivity-timeout' fault at the Receiver (because it doesn't see any
+! incoming PDUs).
+!   In stage 3, the link-simulator is reset so that the transaction can
+! complete normally (i.e. both the Receiver's Finished-Cancel and the
+! Sender's Ack-Finished-Cancel PDUs are put through).
+!   Note:  Inactivity-timeout is set low, and ack-limit high.  This ensures
+! that the Sender does not get an 'ack-limit-reached' fault before the
+! Receiver's inactivity-timeout fault.
+!
+send_to_a print F2.10
+send_to_b print F2.10
+source_file_size 5000000
+mib ack_limit 100
+mib ack_timeout 5
+mib nak_limit 100
+mib nak_timeout 5
+mib inactivity_timeout 5
+link_sim success_rate=90            ! let some PDUs through
+link_sim normal                     
+put                                 ! stage-1 begins
+wait 2                              ! transition from stage-1 to stage-2
+link_sim drop_all                   ! cause inactivity-timeout
+wait_for_transaction_cancellation   ! transition from stage-2 to stage-3
+link_sim normal                     ! allow transaction to complete
+wait_for_transaction_completion
+verify_condition_code Inactivity_detected
+clear_between_tests
+
+
+
+send_to_a print test_ccsds_end
+send_to_b print test_ccsds_end
+
+! end of test script
